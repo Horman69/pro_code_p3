@@ -2,10 +2,10 @@ import { Statistics } from "./Statistics";
 import pilot from "../assets/pilot.png";
 
 
-export const About = () => {
+export const Programmer = () => {
   return (
     <section
-      id="about"
+      id="Programmer"
       className="container py-24 sm:py-32"
     >
       <div className="bg-muted/50 border rounded-lg py-12">
@@ -24,8 +24,7 @@ export const About = () => {
                 для детей и подростков
               </h2>
               <p className="text-xl text-muted-foreground mt-4">
-              Помогаем детям и подросткам 5−16 лет освоить разработку игр на практике, 
-              попробовать себя в профессии разработчика игр и понять, куда развиваться
+              
               </p>
             </div>
 

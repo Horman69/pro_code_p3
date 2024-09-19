@@ -25,12 +25,12 @@ interface RouteProps {
 
 const routeList: RouteProps[] = [
   {
-    href: "#features",
-    label: "Features",
+    href: "#game_developer",
+    label: "#Разработчик игр",
   },
   {
     href: "#testimonials",
-    label: "Testimonials",
+    label: "#Программист",
   },
   {
     href: "#pricing",
@@ -55,7 +55,7 @@ export const Navbar = () => {
               className="ml-2 font-bold text-xl flex"
             >
               <LogoIcon />
-              ShadcnUI/React
+              LearnCode
             </a>
           </NavigationMenuItem>
 
@@ -79,7 +79,7 @@ export const Navbar = () => {
               <SheetContent side={"left"}>
                 <SheetHeader>
                   <SheetTitle className="font-bold text-xl">
-                    Shadcn/React
+                    LearnCode
                   </SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">

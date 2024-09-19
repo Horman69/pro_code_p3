@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Badge } from "./ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+//import { Badge } from "./ui/badge";
+import { Button, /*buttonVariants*/ } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -9,9 +9,9 @@ import {
   CardTitle,
   CardFooter,
 } from "@/components/ui/card";
-import { Check, Linkedin } from "lucide-react";
+import { Check, /*Linkedin*/ } from "lucide-react";
 import { LightBulbIcon } from "./Icons";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+//import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 export const HeroCards = () => {
   return (
@@ -28,36 +28,38 @@ export const HeroCards = () => {
           </Avatar>
 
           <div className="flex flex-col">
-            <CardTitle className="text-lg">John Doe React</CardTitle>
-            <CardDescription>@john_doe</CardDescription>
+            <CardTitle className="text-lg">Развитие уверенности</CardTitle>
+            <CardDescription className="font-normal text-primary">
+          @LearnCode
+          </CardDescription>
           </div>
         </CardHeader>
-
-        <CardContent>This landing page is awesome!</CardContent>
+        <CardDescription>
+        <CardContent>Дадим первый оплачиваемый проект, который поможет поверить в свои силы</CardContent>
+        </CardDescription>
       </Card>
 
       {/* Team */}
       <Card className="absolute right-[20px] top-4 w-80 flex flex-col justify-center items-center drop-shadow-xl shadow-black/10 dark:shadow-white/10">
         <CardHeader className="mt-8 flex justify-center items-center pb-2">
           <img
-            src="https://i.pravatar.cc/150?img=58"
+            src="https://github.com/shadcn.png"
             alt="user avatar"
             className="absolute grayscale-[0%] -top-12 rounded-full w-24 h-24 aspect-square object-cover"
           />
-          <CardTitle className="text-center">Leo Miranda</CardTitle>
+          <CardTitle className="text-center">Учимся один на один</CardTitle>
           <CardDescription className="font-normal text-primary">
-            Frontend Developer
+          @LearnCode
           </CardDescription>
         </CardHeader>
 
         <CardContent className="text-center pb-2">
-          <p>
-            I really enjoy transforming ideas into functional software that
-            exceeds expectations
+          <p><CardDescription> 
+          Формат 1 на 1 помогает ребёнку раскрыться и не бояться делиться идеями</CardDescription>
           </p>
         </CardContent>
 
-        <CardFooter>
+        {/* <CardFooter>
           <div>
             <a
               rel="noreferrer noopener"
@@ -105,40 +107,41 @@ export const HeroCards = () => {
               <Linkedin size="20" />
             </a>
           </div>
-        </CardFooter>
+        </CardFooter> */}
       </Card>
 
       {/* Pricing */}
       <Card className="absolute top-[150px] left-[50px] w-72  drop-shadow-xl shadow-black/10 dark:shadow-white/10">
         <CardHeader>
           <CardTitle className="flex item-center justify-between">
-            Free
-            <Badge
+            Бесплатный урок
+            {/* <Badge
               variant="secondary"
               className="text-sm text-primary"
             >
               Most popular
-            </Badge>
+            </Badge> */}
           </CardTitle>
-          <div>
+          {/* <div>
             <span className="text-3xl font-bold">$0</span>
             <span className="text-muted-foreground"> /month</span>
-          </div>
+          </div> */}
 
           <CardDescription>
-            Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.
+          Запишитесь на бесплатный пробный урок вместе
+          с ребёнком
           </CardDescription>
         </CardHeader>
 
         <CardContent>
-          <Button className="w-full">Start Free Trial</Button>
+          <Button className="w-full">Записаться</Button>
         </CardContent>
 
         <hr className="w-4/5 m-auto mb-4" />
 
         <CardFooter className="flex">
           <div className="space-y-4">
-            {["4 Team member", "4 GB Storage", "Upto 6 pages"].map(
+            {["Первый мини-проект", "Определите направление ", "Узнаете о перспективах развития в IT"].map(
               (benefit: string) => (
                 <span
                   key={benefit}
@@ -160,10 +163,9 @@ export const HeroCards = () => {
             <LightBulbIcon />
           </div>
           <div>
-            <CardTitle>Light & dark mode</CardTitle>
+            <CardTitle>Время с пользой</CardTitle>
             <CardDescription className="text-md mt-2">
-              Lorem ipsum dolor sit amet consect adipisicing elit. Consectetur
-              natusm.
+            Направим увлечение компьютером в полезное русло для большого будущего
             </CardDescription>
           </div>
         </CardHeader>

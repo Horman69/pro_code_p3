@@ -8,27 +8,27 @@ interface SponsorProps {
 const sponsors: SponsorProps[] = [
   {
     icon: <Radar size={34} />,
-    name: "Sponsor 1",
+    name: "Разработчик игр",
   },
   {
     icon: <Radar size={34} />,
-    name: "Sponsor 2",
+    name: "Программист",
   },
   {
     icon: <Radar size={34} />,
-    name: "Sponsor 3",
+    name: "3D-моделлер",
   },
   {
     icon: <Radar size={34} />,
-    name: "Sponsor 4",
+    name: "Старт в IT",
   },
   {
     icon: <Radar size={34} />,
-    name: "Sponsor 5",
+    name: "Дизайнер в IT",
   },
   {
     icon: <Radar size={34} />,
-    name: "Sponsor 6",
+    name: "Мобильная разработка",
   },
 ];
 
@@ -39,7 +39,7 @@ export const Sponsors = () => {
       className="container pt-24 sm:py-32"
     >
       <h2 className="text-center text-md lg:text-xl font-bold mb-8 text-primary">
-        Investors and founders
+        НАШИ КУРСЫ
       </h2>
 
       <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8">

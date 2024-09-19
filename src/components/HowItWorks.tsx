@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { MedalIcon, MapIcon, PlaneIcon, GiftIcon } from "../components/Icons";
+import { MedalIcon, PlaneIcon, GiftIcon,WalletIcon } from "../components/Icons";
 
 interface FeatureProps {
   icon: JSX.Element;
@@ -9,29 +9,35 @@ interface FeatureProps {
 
 const features: FeatureProps[] = [
   {
+    
     icon: <MedalIcon />,
-    title: "Accessibility",
+    
+    title: "Разработчик игр",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Ребёнок научится создавать собственные игры на платформах Roblox или Unity, освоит программирование, работу с игровыми объектами и персонажами.", 
+      
+      
   },
   {
-    icon: <MapIcon />,
-    title: "Community",
+    icon: <WalletIcon />,
+    title: "Программист",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      " Мы начнем с изучения основ работы с консолью разработчика, узнаем, как использовать переменные и операторы для создания программ.",
   },
   {
     icon: <PlaneIcon />,
-    title: "Scalability",
+    title: "3D-моделлер",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Ребёнок научится создавать 3D-модели из 2D-изображений, освоит основы построения фигур и разберётся в принципах управления в Blender.",
   },
   {
     icon: <GiftIcon />,
-    title: "Gamification",
+    title: "Дизайнер в IT",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Ученик создаст одностраничный сайт, нарисует красивую обложку и добавит эффектную анимацию, освоив основы веб-дизайна и графики.",
   },
+
+  
 ];
 
 export const HowItWorks = () => {
@@ -41,15 +47,15 @@ export const HowItWorks = () => {
       className="container text-center py-24 sm:py-32"
     >
       <h2 className="text-3xl md:text-4xl font-bold ">
-        How It{" "}
+        В{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Works{" "}
+          LearnCode{" "}
         </span>
-        Step-by-Step Guide
+        для каждого найдется IT-направление
       </h2>
       <p className="md:w-3/4 mx-auto mt-4 mb-8 text-xl text-muted-foreground">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-        dolor pariatur sit!
+      Даем актуальные навыки востребованных
+      IT-профессий
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

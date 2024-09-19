@@ -35,6 +35,7 @@ const features: FeatureProps[] = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
     image: image,
   },
+  
 ];
 
 const featureList: string[] = [
@@ -52,7 +53,7 @@ const featureList: string[] = [
 export const Features = () => {
   return (
     <section
-      id="features"
+      id="game_developer"
       className="container py-24 sm:py-32 space-y-8"
     >
       <h2 className="text-3xl lg:text-4xl font-bold md:text-center">

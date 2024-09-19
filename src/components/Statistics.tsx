@@ -6,6 +6,7 @@ export const Statistics = () => {
 
   const stats: statsProps[] = [
     {
+      
       quantity: "2.7K+",
       description: "Users",
     },
@@ -39,3 +40,4 @@ export const Statistics = () => {
     </section>
   );
 };
+

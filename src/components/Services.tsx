@@ -10,22 +10,29 @@ interface ServiceProps {
 
 const serviceList: ServiceProps[] = [
   {
-    title: "Code Collaboration",
+    title: "Алгоритмическое мышление",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Алгоритмическое мышление развивается через проектную деятельность, решение задач, программирование и пошаговое обучение. Ученики учатся анализировать задачи, разбивать их на части и находить оптимальные решения, что способствует развитию структурного и логического мышления.",
     icon: <ChartIcon />,
   },
   {
-    title: "Project Management",
+    title: "Развитие творческого потенциала",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    icon: <WalletIcon />,
+      "Творческий потенциал раскрывается через реализацию собственных проектов, эксперименты и нестандартный подход к задачам. Исследование различных методов решения помогает ученикам развивать креативное мышление и уникальные способности.",
+    icon: <ChartIcon />,
   },
   {
-    title: "Task Automation",
+    title: "Основы программирования",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    icon: <MagnifierIcon />,
+      "Основы программирования изучаются через освоение базовых концепций и синтаксиса, с постепенным переходом к сложным темам. Практические задания и создание первых программ способствуют развитию критического мышления и применению знаний на практике.",
+    icon: <ChartIcon />,
+  },
+
+  {
+    title: "Навыки предпринимательства",
+    description:
+      "Умение создавать и продавать — ключевые навыки предпринимательства. Ученики осваивают процесс разработки идей, создание продуктов и их продвижение на рынке. Эти навыки помогают развивать бизнес-мышление и умение эффективно реализовывать проекты.",
+    icon: <ChartIcon />,
   },
 ];
 
@@ -35,15 +42,15 @@ export const Services = () => {
       <div className="grid lg:grid-cols-[1fr,1fr] gap-8 place-items-center">
         <div>
           <h2 className="text-3xl md:text-4xl font-bold">
+            Как {" "}
             <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-              Client-Centric{" "}
+              LearnCode {" "}
             </span>
-            Services
+            помогает развиваться в IT
           </h2>
 
           <p className="text-muted-foreground text-xl mt-4 mb-8 ">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-            dolor.
+          Мы используем лучшие методы обучения, чтобы гарантировать качественные и практичные знания для учеников.
           </p>
 
           <div className="flex flex-col gap-8">
