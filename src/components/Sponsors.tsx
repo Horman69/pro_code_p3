@@ -12,6 +12,19 @@ const sponsors: SponsorProps[] = [
   },
   {
     icon: <Radar size={34} />,
+    name: "Roblox",
+  },
+  {
+    icon: <Radar size={34} />,
+    name: "Minecraft",
+  },
+
+  {
+    icon: <Radar size={34} />,
+    name: "Unity",
+  },
+  {
+    icon: <Radar size={34} />,
     name: "Программист",
   },
   {
@@ -29,6 +42,18 @@ const sponsors: SponsorProps[] = [
   {
     icon: <Radar size={34} />,
     name: "Мобильная разработка",
+  },
+  {
+    icon: <Radar size={34} />,
+    name: "Компьютерная грамотность",
+  },
+  {
+    icon: <Radar size={34} />,
+    name: "Визуальное программирование",
+  },
+  {
+    icon: <Radar size={34} />,
+    name: "Нейросети",
   },
 ];
 
@@ -52,7 +77,9 @@ export const Sponsors = () => {
             <h3 className="text-xl  font-bold">{name}</h3>
           </div>
         ))}
+        
       </div>
+      
     </section>
   );
 };

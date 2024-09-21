@@ -1,5 +1,9 @@
 import { Button } from "./ui/button";
 
+const scrollToForm = () => {
+  document.getElementById('trial-form')?.scrollIntoView({ behavior: 'smooth' });
+};
+
 export const Cta = () => {
   return (
     <section
@@ -14,18 +18,23 @@ export const Cta = () => {
               {" "}
               познакомиться с миром IT{" "}
             </span>
-            можно на первом бесплатном уроке
+            <p></p>можно на первом бесплатном уроке
           </h2>
           <p className="text-muted-foreground text-xl mt-4 mb-8 lg:mb-0">
           {" "}
           </p>
         </div>
 
-        <div className="space-y-4 lg:col-start-2">
-          <Button className="w-full md:mr-4 md:w-auto">ВЫБРАТЬ УДОБНОЕ ВРЕМЯ</Button>
+        <div className="space-y- lg:col-start-2">
+          <Button className="w-full md:mr-4 md:w-auto" onClick={scrollToForm}>ВЫБРАТЬ УДОБНОЕ ВРЕМЯ</Button>
           {/* <Button
             variant="outline"
             className="w-full md:w-auto"
+            <Button className="w-full md:w-1/3" onClick={() => {
+            document.getElementById('trial-form')?.scrollIntoView({ behavior: 'smooth' });
+          }}>
+            БЕСПЛАТНЫЙ УРОК
+          </Button>
           >
             View all features
           </Button> */}

@@ -1,7 +1,12 @@
 import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
-import { MagnifierIcon, WalletIcon, ChartIcon } from "./Icons";
+import {  ChartIcon } from "./Icons";
 import cubeLeg from "../assets/cube-leg.png";
+import { Button } from "./ui/button";
 
+
+const scrollToForm = () => {
+  document.getElementById('trial-form')?.scrollIntoView({ behavior: 'smooth' });
+};
 interface ServiceProps {
   title: string;
   description: string;
@@ -33,6 +38,7 @@ const serviceList: ServiceProps[] = [
     description:
       "Умение создавать и продавать — ключевые навыки предпринимательства. Ученики осваивают процесс разработки идей, создание продуктов и их продвижение на рынке. Эти навыки помогают развивать бизнес-мышление и умение эффективно реализовывать проекты.",
     icon: <ChartIcon />,
+    
   },
 ];
 
@@ -49,17 +55,17 @@ export const Services = () => {
             помогает развиваться в IT
           </h2>
 
-          <p className="text-muted-foreground text-xl mt-4 mb-8 ">
-          Мы используем лучшие методы обучения, чтобы гарантировать качественные и практичные знания для учеников.
+          <p className="text-muted-foreground text-xl mt-4 mb-8">
+            Мы используем лучшие методы обучения, чтобы гарантировать
+            качественные и практичные знания для учеников.
           </p>
 
           <div className="flex flex-col gap-8">
             {serviceList.map(({ icon, title, description }: ServiceProps) => (
               <Card key={title}>
                 <CardHeader className="space-y-1 flex md:flex-row justify-start items-start gap-4">
-                  <div className="mt-1 bg-primary/20 p-1 rounded-2xl">
-                    {icon}
-                  </div>
+                  <div className="mt-1 bg-primary/20 p-1 rounded-2xl">{icon}</div>
+
                   <div>
                     <CardTitle>{title}</CardTitle>
                     <CardDescription className="text-md mt-2">
@@ -72,11 +78,14 @@ export const Services = () => {
           </div>
         </div>
 
-        <img
-          src={cubeLeg}
-          className="w-[300px] md:w-[500px] lg:w-[600px] object-contain"
-          alt="About services"
-        />
+        <div className="flex flex-col items-center">
+          <img
+            src={cubeLeg}
+            className="w-[300px] md:w-[500px] lg:w-[600px] object-contain"
+            alt="About services"
+          />
+          <Button className="w-full md:w-1/3 mt-4" onClick={scrollToForm}>БЕСПЛАТНЫЙ УРОК</Button>
+        </div>
       </div>
     </section>
   );

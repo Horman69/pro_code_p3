@@ -1,6 +1,6 @@
 import { Statistics } from "./Statistics";
 import pilot from "../assets/pilot.png";
-
+//import { Button } from "./ui/button";
 
 export const About = () => {
   return (
@@ -19,20 +19,27 @@ export const About = () => {
             <div className="pb-6">
               <h2 className="text-3xl md:text-4xl font-bold">
                 <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-                Разработка игр{" "}
+                  О школе {" "}
                 </span>
-                для детей и подростков
+                LearnCode
               </h2>
               <p className="text-xl text-muted-foreground mt-4">
-              Помогаем детям и подросткам 5−16 лет освоить разработку игр на практике, 
-              попробовать себя в профессии разработчика игр и понять, куда развиваться
+                Мы обучаем детей и подростков от 6 до 16 лет программированию,
+                помогая им освоить важные навыки для будущей профессии.
+                Наши курсы построены на практике, чтобы учащиеся могли развивать
+                логическое и алгоритмическое мышление, изучать различные направления IT 
+                и найти свой путь в сфере технологий.
               </p>
             </div>
-
             <Statistics />
           </div>
         </div>
       </div>
+
+      {/* Центрируем кнопку */}
+      {/* <div className="flex justify-center mt-8">
+        <Button className="w-full md:w-1/3">БЕСПЛАТНЫЙ УРОК</Button>
+      </div> */}
     </section>
   );
 };

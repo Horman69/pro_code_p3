@@ -1,3 +1,4 @@
+import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import {
   Card,
@@ -10,6 +11,10 @@ import image from "../assets/growth.png";
 import image3 from "../assets/reflecting.png";
 import image4 from "../assets/looking-ahead.png";
 
+
+const scrollToForm = () => {
+  document.getElementById('trial-form')?.scrollIntoView({ behavior: 'smooth' });
+};
 interface FeatureProps {
   title: string;
   description: string;
@@ -18,36 +23,35 @@ interface FeatureProps {
 
 const features: FeatureProps[] = [
   {
-    title: "Responsive Design",
+    title: "Основы программирования",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Научим понимать логику кода без погружения в сложные языки программирования и разрабатывать собственные программы в среде Scratch",
     image: image4,
   },
   {
-    title: "Intuitive user interface",
+    title: "Первый опыт в IT",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Пройдем полный цикл создания креативного проекта «по-взрослому»: от идеи и плана до взаимодействия с командой и презентации",
     image: image3,
   },
   {
-    title: "AI-Powered insights",
+    title: "Портфолио проектов",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Соберем портфолио из не менее 20 проектов, среди которых визитка с анимацией, мультфильм с озвучкой и многоуровневая игра с препятствиями",
     image: image,
   },
   
 ];
 
 const featureList: string[] = [
-  "Dark/Light theme",
-  "Reviews",
-  "Features",
-  "Pricing",
-  "Contact form",
-  "Our team",
-  "Responsive design",
-  "Newsletter",
-  "Minimalist",
+  "#Разработчик игр",
+  "#Программист",
+  "#3D-моделлер",
+  "#Старт в IT",
+  "#Дизайнер в IT",
+  "#Мобильная разработка",
+  "#Компьютерная грамотность",
+  "#Визуальное программирование",
 ];
 
 export const Features = () => {
@@ -57,10 +61,11 @@ export const Features = () => {
       className="container py-24 sm:py-32 space-y-8"
     >
       <h2 className="text-3xl lg:text-4xl font-bold md:text-center">
-        Many{" "}
+      Изучаем.{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Great Features
+        Играем.{" "}
         </span>
+        Создаем.
       </h2>
 
       <div className="flex flex-wrap md:justify-center gap-4">
@@ -95,6 +100,13 @@ export const Features = () => {
           </Card>
         ))}
       </div>
+      <div
+       className="flex justify-center mt-8">
+ <Button className="w-full md:w-1/3" onClick={scrollToForm}>
+            БЕСПЛАТНЫЙ УРОК
+          </Button>
+</div>
+
     </section>
   );
 };

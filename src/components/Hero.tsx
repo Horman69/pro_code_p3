@@ -1,7 +1,9 @@
 import { Button } from "./ui/button";
-//import { buttonVariants } from "./ui/button";
 import { HeroCards } from "./HeroCards";
-// import { GitHubLogoIcon } from "@radix-ui/react-icons";
+
+const scrollToForm = () => {
+  document.getElementById('trial-form')?.scrollIntoView({ behavior: 'smooth' });
+};
 
 export const Hero = () => {
   return (
@@ -13,13 +15,11 @@ export const Hero = () => {
             LearnCode
             </span>{" "}
             детская онлайн-школа
-          </h1>{" "}
-          {/* IT-профессий{" "} */}
+          </h1>
           <h2 className="inline">
             <span className="inline bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text">
             IT-профессий
-            </span>{" "}
-            {/* developers */}
+            </span>
           </h2>
         </main>
 
@@ -28,31 +28,18 @@ export const Hero = () => {
         </p>
 
         <div className="space-y-4 md:space-y-0 md:space-x-4">
-          <Button className="w-full md:w-1/3">БЕСПАТНЫЙ УРОК</Button>
-
-          
-
-          {/* <a
-            rel="noreferrer noopener"
-            href="https://github.com/leoMirandaa/shadcn-landing-page.git"
-            target="_blank"
-            className={`w-full md:w-1/3 ${buttonVariants({
-              variant: "outline",
-            })}`}
-          >
-            Github Repository
-            <GitHubLogoIcon className="ml-2 w-5 h-5" />
-          </a> */}
+          <Button className="w-full md:w-1/3" onClick={scrollToForm}>
+            БЕСПЛАТНЫЙ УРОК
+          </Button>
         </div>
       </div>
 
-      {/* Hero cards sections */}
       <div className="z-10">
         <HeroCards />
       </div>
 
-      {/* Shadow effect */}
       <div className="shadow"></div>
     </section>
   );
 };
+

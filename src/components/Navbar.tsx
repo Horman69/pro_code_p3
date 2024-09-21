@@ -12,7 +12,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+//import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
@@ -29,12 +29,17 @@ const routeList: RouteProps[] = [
     label: "#Разработчик игр",
   },
   {
-    href: "#testimonials",
+    href: "#game_developer",
     label: "#Программист",
   },
   {
-    href: "#pricing",
-    label: "Pricing",
+    href: "#game_developer",
+    label: "#3D-моделлер",
+    
+  },
+  {
+    href: "#game_developer",
+    label: "#Дизайнер в IT",
   },
   {
     href: "#faq",
@@ -96,14 +101,14 @@ export const Navbar = () => {
                   ))}
                   <a
                     rel="noreferrer noopener"
-                    href="https://github.com/leoMirandaa/shadcn-landing-page.git"
+                    href="https://t.me/LearnCode_web3_bot"
                     target="_blank"
                     className={`w-[110px] border ${buttonVariants({
                       variant: "secondary",
                     })}`}
                   >
-                    <GitHubLogoIcon className="mr-2 w-5 h-5" />
-                    Github
+                    
+                    Telegram
                   </a>
                 </nav>
               </SheetContent>
@@ -129,12 +134,11 @@ export const Navbar = () => {
           <div className="hidden md:flex gap-2">
             <a
               rel="noreferrer noopener"
-              href="https://github.com/leoMirandaa/shadcn-landing-page.git"
+              href="https://t.me/LearnCode_web3_bot"
               target="_blank"
               className={`border ${buttonVariants({ variant: "secondary" })}`}
             >
-              <GitHubLogoIcon className="mr-2 w-5 h-5" />
-              Github
+              Telergram
             </a>
 
             <ModeToggle />

@@ -1,6 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { MedalIcon, PlaneIcon, GiftIcon,WalletIcon } from "../components/Icons";
+import { Button } from "./ui/button";
 
+const scrollToForm = () => {
+  document.getElementById('trial-form')?.scrollIntoView({ behavior: 'smooth' });
+};
 interface FeatureProps {
   icon: JSX.Element;
   title: string;
@@ -69,11 +73,14 @@ export const HowItWorks = () => {
                 {icon}
                 {title}
               </CardTitle>
+              
             </CardHeader>
             <CardContent>{description}</CardContent>
           </Card>
         ))}
       </div>
+      <Button className="w-full md:w-1/3 mt-8" onClick={scrollToForm}>БЕСПЛАТНЫЙ УРОК</Button>
     </section>
   );
 };
+

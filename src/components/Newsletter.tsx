@@ -2,40 +2,35 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 export const Newsletter = () => {
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Subscribed!");
+    console.log("Form submitted!");
   };
 
   return (
-    <section id="newsletter">
-      <hr className="w-11/12 mx-auto" />
-
-      <div className="container py-24 sm:py-32">
-        <h3 className="text-center text-4xl md:text-5xl font-bold">
-          Join Our Daily{" "}
-          <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-            Newsletter
-          </span>
-        </h3>
-        <p className="text-xl text-muted-foreground text-center mt-4 mb-8">
-          Lorem ipsum dolor sit amet consectetur.
-        </p>
-
-        <form
-          className="flex flex-col w-full md:flex-row md:w-6/12 lg:w-4/12 mx-auto gap-4 md:gap-2"
-          onSubmit={handleSubmit}
-        >
-          <Input
-            placeholder="leomirandadev@gmail.com"
-            className="bg-muted/50 dark:bg-muted/80 "
-            aria-label="email"
-          />
-          <Button>Subscribe</Button>
+    <section id="trial-form" className="bg-white dark:bg-[#0c0a09] py-12 text-black dark:text-white">
+      <div className="p-8 bg-green-500 dark:bg-green-700 rounded-lg shadow-lg max-w-md mx-auto">
+        <h3 className="text-center text-3xl font-bold mb-4 text-white">Попробуйте бесплатно!</h3>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label className="block mb-2 text-white">Имя</label>
+            <Input className="w-full px-4 py-2 bg-white text-black dark:bg-gray-800 dark:text-white" placeholder="Введите имя" />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-2 text-white">Телефон</label>
+            <Input className="w-full px-4 py-2 bg-white text-black dark:bg-gray-800 dark:text-white" placeholder="+7 (___) ___-__-__" />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-2 text-white">Электронная почта</label>
+            <Input className="w-full px-4 py-2 bg-white text-black dark:bg-gray-800 dark:text-white" placeholder="example@mail.com" />
+          </div>
+          <Button className="bg-yellow-500 w-full py-2 rounded text-black">Оставить заявку</Button>
+          <div className="mt-4 flex items-center">
+            <input type="checkbox" className="mr-2" />
+            <span className="text-white">Согласен с условиями</span>
+          </div>
         </form>
       </div>
-
-      <hr className="w-11/12 mx-auto" />
     </section>
   );
 };

@@ -1,7 +1,7 @@
 import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
-  CardContent,
+  //CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -23,21 +23,21 @@ interface SociaNetworkslProps {
 
 const teamList: TeamProps[] = [
   {
-    imageUrl: "https://i.pravatar.cc/150?img=35",
-    name: "Emma Smith",
-    position: "Product Manager",
+    imageUrl: "https://sun6-23.userapi.com/impg/2mv8R5sPSnbLR_7zDERcA4SkJ6fqcO0pKLwJNg/Wzc8aqLNd7s.jpg?size=960x1280&quality=95&sign=327cf3a4e42bb498d4081bca2e81f77e&type=album",
+    name: "Искендеров Руслан",
+    position: "Наставник",
     socialNetworks: [
       {
         name: "Linkedin",
-        url: "https://www.linkedin.com/in/leopoldo-miranda/",
+        url: "https://www.linkedin.com/in/%D1%80%D1%83%D1%81%D0%BB%D0%B0%D0%BD-%D0%B8%D1%81%D0%BA%D0%B5%D0%BD%D0%B4%D0%B5%D1%80%D0%BE%D0%B2-333873251/",
       },
       {
         name: "Facebook",
-        url: "https://www.facebook.com/",
+        url: "https://www.facebook.com/profile.php?id=100085337074362",
       },
       {
         name: "Instagram",
-        url: "https://www.instagram.com/",
+        url: "https://www.instagram.com/norman.p3",
       },
     ],
   },
@@ -143,9 +143,9 @@ export const Team = () => {
                 </CardDescription>
               </CardHeader>
 
-              <CardContent className="text-center pb-2">
+              {/* <CardContent className="text-center pb-2">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-              </CardContent>
+              </CardContent> */}
 
               <CardFooter>
                 {socialNetworks.map(({ name, url }: SociaNetworkslProps) => (
