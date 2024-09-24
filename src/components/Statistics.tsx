@@ -5,19 +5,19 @@ export const Statistics = () => {
   }
 
   const stats: statsProps[] = [
-    {
+    // {
       
-      quantity: "200+",
-      description: "уроков проходит ежедневно",
-    },
-    {
-      quantity: "30",
-      description: "опытных наставников",
-    },
-    {
-      quantity: "1000+",
-      description: "выпускников",
-    },
+    //   quantity: "200+",
+    //   description: "уроков проходит ежедневно",
+    // },
+    // {
+    //   quantity: "30",
+    //   description: "опытных наставников",
+    // },
+    // {
+    //   quantity: "1000+",
+    //   description: "выпускников",
+    // },
 
   ];
 

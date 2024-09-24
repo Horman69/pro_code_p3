@@ -79,13 +79,11 @@ export const FAQ = () => {
       <h3 className="font-medium mt-4">
       Остались вопросы?{" "}
         <a
-        
           rel="noreferrer noopener"
-          href="https://t.me/LearnCode_web3_bot"
+          href="https://t.me/PRO_CODE_web3_bot"
           className="text-primary transition-all border-primary hover:border-b-2"
         >
           Связаться с нами
-          
         </a>
       </h3>
     </section>

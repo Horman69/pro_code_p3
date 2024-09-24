@@ -42,6 +42,10 @@ html {
       right: 160px;
     }
   }
+
+  .hero-cards {
+    transform: scale(0.9);
+  }
 }
 
 @media (max-width: 768px) {
@@ -61,5 +65,9 @@ html {
       background: hsl(var(--primary) / 30%);
       right: 100px;
     }
+  }
+
+  .hero-cards {
+    transform: scale(0.8);
   }
 }

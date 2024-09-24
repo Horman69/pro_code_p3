@@ -1,35 +1,203 @@
+import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { Card, CardHeader, CardTitle } from "./ui/card";
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/bootstrap.css'
+import '../PhoneInput.css'; // Добавьте этот импорт для кастомных стилей
 
-export const Newsletter = () => {
-  const handleSubmit = (e: React.FormEvent) => {
+interface FormData {
+  name: string;
+  phone: string;
+  email: string;
+}
+
+export const Newsletter: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({ name: "", phone: "", email: "" });
+  const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isAgreed, setIsAgreed] = useState(false);
+  const [agreementError, setAgreementError] = useState("");
+
+  // Обработчик изменения значений в полях ввода
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    validateField(name, value);
+  };
+
+  // Обработчик изменения значения в поле ввода телефона
+  const handlePhoneChange = (value: string) => {
+    setFormData(prev => ({ ...prev, phone: value }));
+    validateField('phone', value);
+  };
+
+  // Валидация полей формы
+  const validateField = (name: string, value: string) => {
+    let error = "";
+    switch (name) {
+      case "name":
+        if (!value.trim()) error = "Необходимо указать имя";
+        break;
+      case "phone":
+        if (!value.trim() || value.replace(/\D/g, '').length < 10) {
+          error = "Необходимо указать верный телефон";
+        }
+        break;
+      case "email":
+        if (!value.trim() || !/\S+@\S+\.\S+/.test(value)) {
+          error = "Необходимо указать верный email";
+        }
+        break;
+    }
+    setErrors(prev => ({ ...prev, [name]: error }));
+  };
+
+  // Обработчик отправки формы
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted!");
+    Object.keys(formData).forEach(key => validateField(key, formData[key as keyof FormData]));
+    if (!isAgreed) {
+      setAgreementError("Необходимо согласиться с положением о защите персональных данных");
+    } else {
+      setAgreementError("");
+    }
+    if (Object.values(errors).every(error => !error) && isAgreed) {
+      setIsSubmitting(true);
+      // Здесь будет отправка формы
+      console.log("Форма отправлена", formData);
+      setIsSubmitting(false);
+    }
+  };
+
+  // Шаги процесса
+  const steps = [
+    "Перезвоним и поможем подобрать курс",
+    "Запишем на бесплатные пробные занятия",
+    "После рассчитаем финальную стоимость с учетом возможных льгот, текущих скидок и выбранного пакета",
+  ];
+
+  // Стили для полей ввода
+  const inputStyle = {
+    width: '100%',
+    height: '50px',
+    fontSize: '16px',
+    borderRadius: '10px',
+    border: '1px solid #191817',
+    color: '#71717A',
+    paddingLeft: '16px',
   };
 
   return (
-    <section id="trial-form" className="bg-white dark:bg-[#0c0a09] py-12 text-black dark:text-white">
-      <div className="p-8 bg-green-500 dark:bg-green-700 rounded-lg shadow-lg max-w-md mx-auto">
-        <h3 className="text-center text-3xl font-bold mb-4 text-white">Попробуйте бесплатно!</h3>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block mb-2 text-white">Имя</label>
-            <Input className="w-full px-4 py-2 bg-white text-black dark:bg-gray-800 dark:text-white" placeholder="Введите имя" />
-          </div>
-          <div className="mb-4">
-            <label className="block mb-2 text-white">Телефон</label>
-            <Input className="w-full px-4 py-2 bg-white text-black dark:bg-gray-800 dark:text-white" placeholder="+7 (___) ___-__-__" />
-          </div>
-          <div className="mb-4">
-            <label className="block mb-2 text-white">Электронная почта</label>
-            <Input className="w-full px-4 py-2 bg-white text-black dark:bg-gray-800 dark:text-white" placeholder="example@mail.com" />
-          </div>
-          <Button className="bg-yellow-500 w-full py-2 rounded text-black">Оставить заявку</Button>
-          <div className="mt-4 flex items-center">
-            <input type="checkbox" className="mr-2" />
-            <span className="text-white">Согласен с условиями</span>
-          </div>
-        </form>
+    <section id="trial-form" className="container py-24 sm:py-32">
+      <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-black dark:text-white">
+        Попробуйте <span className="text-[#2dac5c] dark:text-[#19773b]">бесплатно!</span>
+      </h2>
+      <div className="grid lg:grid-cols-2 gap-8">
+        <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 bg-[#2dac5c] dark:bg-[#19773b] text-white">
+          <CardHeader>
+            <CardTitle className="text-2xl">Заполните форму</CardTitle>
+            {/* <CardDescription className="text-white/80">
+              Мы свяжемся с вами в течение дня.
+            </CardDescription> */}
+            <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+              <div>
+                <Input
+                  style={inputStyle}
+                  placeholder="Введите имя"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+                {errors.name && <p className="text-[#FFF59E] text-sm mt-1">{errors.name}</p>}
+              </div>
+              <div>
+                <PhoneInput
+                  country={'ru'} // Устанавливаем Россию как страну по умолчанию
+                  value={formData.phone} // Значение телефона из состояния формы
+                  onChange={handlePhoneChange} // Обработчик изменения номера телефона
+                  inputProps={{
+                    name: 'phone',
+                    required: true,
+                  }}
+                  inputStyle={{
+                    ...inputStyle,
+                    paddingLeft: '48px',
+                  }}
+                  buttonStyle={{
+                    border: 'none',
+                    background: 'transparent',
+                    borderRadius: '10px 0 0 10px',
+                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', // Добавляем тень
+                  }}
+                  dropdownStyle={{
+                    width: 'max-content',
+                  }}
+                  containerStyle={{
+                    width: '100%',
+                  }}
+                />
+                {errors.phone && <p className="text-[#FFF59E] text-sm mt-1">{errors.phone}</p>}
+              </div>
+              <div>
+                <Input
+                  style={inputStyle}
+                  placeholder="example@mail.com"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                {errors.email && <p className="text-[#FFF59E] text-sm mt-1">{errors.email}</p>}
+              </div>
+              <Button
+                className="w-full h-[50px] py-3 bg-yellow-500 hover:bg-yellow-600 text-black transition-colors duration-300 text-lg font-semibold rounded-[10px]"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Отправка..." : "ЗАПИСАТЬСЯ НА БЕСПЛАТНЫЙ УРОК"}
+              </Button>
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="agreement"
+                  className="mr-2 w-4 h-4 text-yellow-500 border-2 border-white focus:ring-yellow-500"
+                  checked={isAgreed}
+                  onChange={(e) => {
+                    setIsAgreed(e.target.checked);
+                    if (e.target.checked) setAgreementError("");
+                  }}
+                />
+                <label htmlFor="agreement" className="text-sm">
+                  Соглашаюсь с <span className="text-yellow-300 hover:underline cursor-pointer">положением о защите персональных данных</span>
+                </label>
+              </div>
+              {agreementError && (
+                <p className="text-[#FFF59E] text-sm mt-1 bg-[#2dac5c]/50 dark:bg-[#19773b]/50 p-2 rounded">
+                  {agreementError}
+                </p>
+              )}
+            </form>
+          </CardHeader>
+        </Card>
+        
+        <div className="flex flex-col gap-4">
+          <h3 className="text-2xl font-semibold text-black dark:text-white mb-4">
+            Мы свяжемся с вами в течение дня
+          </h3>
+          {steps.map((step, index) => (
+            <Card 
+              key={index}
+              className="hover:shadow-lg transition-all duration-300 hover:scale-105 transform bg-white dark:bg-[#1c1917] cursor-pointer group"
+            >
+              <CardHeader className="flex flex-row items-center space-y-0 gap-4">
+                <div className="w-8 h-8 rounded-full bg-[#2dac5c]/20 dark:bg-[#19773b]/20 flex items-center justify-center text-[#2dac5c] dark:text-[#19773b] group-hover:bg-[#2dac5c] dark:group-hover:bg-[#19773b] group-hover:text-white transition-all duration-300">
+                  <span className="text-lg font-semibold">{index + 1}</span>
+                </div>
+                <CardTitle className="text-lg text-zinc-600 dark:text-zinc-400">{step}</CardTitle>
+              </CardHeader>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   );

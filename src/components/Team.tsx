@@ -1,7 +1,7 @@
 import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
-  //CardContent,
+  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -25,7 +25,7 @@ const teamList: TeamProps[] = [
   {
     imageUrl: "https://sun6-23.userapi.com/impg/2mv8R5sPSnbLR_7zDERcA4SkJ6fqcO0pKLwJNg/Wzc8aqLNd7s.jpg?size=960x1280&quality=95&sign=327cf3a4e42bb498d4081bca2e81f77e&type=album",
     name: "Искендеров Руслан",
-    position: "Наставник",
+    position: "Основатель и Наставник",
     socialNetworks: [
       {
         name: "Linkedin",
@@ -38,56 +38,6 @@ const teamList: TeamProps[] = [
       {
         name: "Instagram",
         url: "https://www.instagram.com/norman.p3",
-      },
-    ],
-  },
-  {
-    imageUrl: "https://i.pravatar.cc/150?img=60",
-    name: "John Doe",
-    position: "Tech Lead",
-    socialNetworks: [
-      {
-        name: "Linkedin",
-        url: "https://www.linkedin.com/in/leopoldo-miranda/",
-      },
-      {
-        name: "Facebook",
-        url: "https://www.facebook.com/",
-      },
-      {
-        name: "Instagram",
-        url: "https://www.instagram.com/",
-      },
-    ],
-  },
-  {
-    imageUrl: "https://i.pravatar.cc/150?img=36",
-    name: "Ashley Ross",
-    position: "Frontend Developer",
-    socialNetworks: [
-      {
-        name: "Linkedin",
-        url: "https://www.linkedin.com/in/leopoldo-miranda/",
-      },
-
-      {
-        name: "Instagram",
-        url: "https://www.instagram.com/",
-      },
-    ],
-  },
-  {
-    imageUrl: "https://i.pravatar.cc/150?img=17",
-    name: "Bruce Rogers",
-    position: "Backend Developer",
-    socialNetworks: [
-      {
-        name: "Linkedin",
-        url: "https://www.linkedin.com/in/leopoldo-miranda/",
-      },
-      {
-        name: "Facebook",
-        url: "https://www.facebook.com/",
       },
     ],
   },
@@ -110,26 +60,26 @@ export const Team = () => {
   return (
     <section
       id="team"
-      className="container py-24 sm:py-32"
+      className="container py-24 sm:py-32 text-center"
+      aria-label="Наша команда"
     >
-      <h2 className="text-3xl md:text-4xl font-bold">
-        <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Our Dedicated{" "}
-        </span>
-        Crew
-      </h2>
+      <header>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
+          Наша миссия
+          </span>
+        </h2>
+        {/* <p className="text-xl text-muted-foreground pt-1 pb-6 md:w-3/4 mx-auto">
+          Мы стремимся помочь детям найти путь в IT, разобраться в непростых темах и сделать шаг вперед к своим мечтам.
+        </p> */}
+      </header>
 
-      <p className="mt-4 mb-10 text-xl text-muted-foreground">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-        dolor pariatur sit!
-      </p>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 gap-y-10">
+      <div className="flex justify-center">
         {teamList.map(
           ({ imageUrl, name, position, socialNetworks }: TeamProps) => (
             <Card
               key={name}
-              className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center"
+              className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center hover:shadow-lg transition-shadow duration-300"
             >
               <CardHeader className="mt-8 flex justify-center items-center pb-2">
                 <img
@@ -143,9 +93,17 @@ export const Team = () => {
                 </CardDescription>
               </CardHeader>
 
-              {/* <CardContent className="text-center pb-2">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-              </CardContent> */}
+              <CardContent className="text-left pb-2">
+                <p className="text-lg text-muted-foreground mb-4">
+                  Я прошел все этапы IT-обучения на практике — от работы школьным учителем до создания собственной образовательной платформы. Моя цель — делиться накопленным опытом через курсы, которые помогают детям и подросткам легко освоить технологии и уверенно двигаться вперед в мире IT.
+                </p>
+                <p className="text-lg text-muted-foreground mb-4">
+                  Вместе с командой, которая разделяет мои ценности и подход, мы разрабатываем практические курсы на основе реальных задач. Мы стремимся сделать обучение доступным, интересным и полезным, помогая каждому ребенку раскрыть свой потенциал в программировании и IT.
+                </p>
+                <p className="text-lg text-muted-foreground">
+                  <strong>Миссия:</strong> дать детям не просто знания по программированию, а помочь им стать лидерами в технологическом мире, развивая у них способность решать сложные задачи и уверенность в своих силах.
+                </p>
+              </CardContent>
 
               <CardFooter>
                 {socialNetworks.map(({ name, url }: SociaNetworkslProps) => (
