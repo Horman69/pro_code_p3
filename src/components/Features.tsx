@@ -86,7 +86,7 @@ export const Features = () => {
         {features.map(({ title, description, image }: FeatureProps) => (
           <Card
             key={title}
-            className="hover:shadow-lg transition-shadow duration-300 hover:scale-105 transform transition-transform duration-300 bg-[#F7F7F8] dark:bg-[#1c1917] dark:text-gray-300"
+            className="hover:shadow-lg transition-all duration-300 hover:scale-105 bg-[#F7F7F8] dark:bg-[#1c1917] dark:text-gray-300"
           >
             <CardHeader>
               <CardTitle>{title}</CardTitle>
@@ -106,10 +106,7 @@ export const Features = () => {
       </div>
       <div
        className="flex justify-center mt-8">
- <Button 
-  className="w-full md:w-auto text-lg font-semibold bg-[#2dac5c] hover:bg-[#259d52] text-white dark:text-black transition-colors duration-300 px-6 py-3 rounded-[10px]" 
-  onClick={scrollToForm}
->
+ <Button className="w-full md:w-auto text-lg font-semibold bg-[#2dac5c] hover:bg-[#259d52] text-white transition-colors duration-300 px-6 py-3" onClick={scrollToForm}>
             ЗАПИСАТЬСЯ НА БЕСПЛАТНЫЙ УРОК
           </Button>
 </div>

@@ -12,7 +12,7 @@ export const About = () => {
           </span>
           PRO_CODE
         </h2>
-        <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 bg-[#F7F7F8] dark:bg-[#1c1917]">
+        <Card className="shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-[#F7F7F8] dark:bg-[#1c1917] dark:text-gray-300">
           <CardContent className="p-8">
             <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-12">
               <img
@@ -29,30 +29,19 @@ export const About = () => {
                     которая формирует ключевые навыки для успешной карьеры в IT:
                   </p>
                   <ul className="text-lg md:text-xl text-muted-foreground space-y-3">
-                    <li className="flex items-start">
-                      <span className="text-primary mr-2">✅</span>
-                      <span>Практические курсы по востребованным направлениям</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-primary mr-2">✅</span>
-                      <span>Развитие алгоритмического мышления и логики</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-primary mr-2">✅</span>
-                      <span>Индивидуальный подход и поддержка преподавателей из ведущих IT-компаний</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-primary mr-2">✅</span>
-                      <span>Проектная работа: создание игр, веб-сайтов, анимаций</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-primary mr-2">✅</span>
-                      <span>Портфолио готовых проектов для будущей профессии</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-primary mr-2">✅</span>
-                      <span>Доступ к учебным материалам и консультациям</span>
-                    </li>
+                    {[ 
+                      "Практические курсы по востребованным направлениям",
+                      "Развитие алгоритмического мышления и логики",
+                      "Индивидуальный подход и поддержка преподавателей из ведущих IT-компаний",
+                      "Проектная работа: создание игр, веб-сайтов, анимаций",
+                      "Портфолио готовых проектов для будущей профессии",
+                      "Доступ к учебным материалам и консультациям"
+                    ].map((item, index) => (
+                      <li key={index} className="flex items-start">
+                        <span className="text-primary mr-2">✅</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <Statistics />
