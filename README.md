@@ -1,59 +1,83 @@
-# Shadcn/UI Landing Page Template
+# PRO_CODE Landing Page
 
-## <a href="https://ui.shadcn.com/" target="_blank">ShadcnUI</a> + <a href="https://react.dev/" target="_blank">React</a> + <a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a> + <a href="https://tailwindcss.com/" target="_blank">Tailwind</a>.
+PRO_CODE - это современная лендинг-страница для онлайн-школы программирования, разработанная с использованием React, TypeScript и Tailwind CSS.
 
-![shadch-landing-page](https://github.com/leoMirandaa/shadcn-landing-page/assets/61714687/3ba7b51f-9589-4541-800a-5ab7cecad1b5)
+## Особенности
 
-Build your React landing page effortlessly with the required sections to your project. <a href="https://shadcn-landing-page.vercel.app/" target="_blank">Live Demo</a>
+- Адаптивный дизайн
+- Темная и светлая темы
+- Компоненты, созданные с помощью shadcn/ui
+- Анимации и интерактивные элементы
+- Оптимизированная производительность
+- Страницы политики конфиденциальности и условий использования
 
-## Sections
+## Технологии
 
-- [x] Navbar
-- [x] Sidebar(mobile)
-- [x] Hero
-- [x] Sponsors
-- [x] About
-- [x] Stats
-- [x] How It Works
-- [x] Features
-- [x] Services
-- [x] Call-to-Action (CTA)
-- [x] Testimonials
-- [x] Team
-- [x] Pricing
-- [x] Newsletter
-- [x] Frequently Asked Questions(FAQ)
-- [x] Footer
+- React
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Vite
+- React Router для навигации
 
-## Features
+## Установка и запуск
 
-- [x] Fully Responsive Design
-- [x] User Friendly Navigation
-- [x] Dark Mode
-- [x] Meta tags
+1. Клонируйте репозиторий:
+   ```
+   git clone https://github.com/Horman69/shadcn-landing-page-main.git
+   ```
 
-## How to install
+2. Перейдите в директорию проекта:
+   ```
+   cd shadcn-landing-page-main
+   ```
 
-1. Clone this repository:
+3. Установите зависимости:
+   ```
+   npm install
+   ```
 
-```bash
-git clone https://github.com/leoMirandaa/shadcn-landing-page.git
-```
+4. Запустите проект в режиме разработки:
+   ```
+   npm run dev
+   ```
 
-2. Go into project
+## Структура проекта
 
-```bash
-cd shadcn-landing-page
-```
+- `src/components/` - React компоненты
+- `src/pages/` - Страницы приложения (включая PrivacyPolicy и TermsOfUse)
+- `src/styles/` - Глобальные стили
+- `public/` - Статические ресурсы
 
-3. Install dependencies
+## Основные компоненты
 
-```bash
-npm install
-```
+- `Navbar` - Навигационная панель
+- `Hero` - Главный баннер с призывом к действию
+- `HeroCards` - Карточки с информацией в секции Hero
+- `Features` - Секция с особенностями курсов
+- `Services` - Предлагаемые услуги
+- `HowItWorks` - Описание процесса обучения
+- `About` - Информация о школе
+- `Team` - Секция с командой преподавателей
+- `Testimonials` - Отзывы клиентов
+- `FAQ` - Часто задаваемые вопросы
+- `Newsletter` - Форма подписки на новости
+- `Footer` - Подвал сайта
 
-4. Run project
+## Страницы
 
-```bash
-npm run dev
-```
+- `Home` - Главная страница
+- `PrivacyPolicy` - Политика конфиденциальности
+- `TermsOfUse` - Условия использования
+
+## Кастомизация
+
+Для изменения цветовой схемы или других стилей, отредактируйте файл `tailwind.config.js`.
+
+## Вклад в проект
+
+Мы приветствуем вклад в развитие проекта! Пожалуйста, создавайте issue или pull request для предложения изменений.
+
+## Лицензия
+
+Этот проект распространяется под лицензией MIT. Подробности смотрите в файле [LICENSE](LICENSE).
