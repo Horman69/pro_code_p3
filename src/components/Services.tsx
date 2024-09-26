@@ -61,12 +61,12 @@ export const Services = () => {
 
           <div className="flex flex-col gap-8">
             {serviceList.map(({ icon, title, description }: ServiceProps) => (
-              <Card key={title} className="hover:shadow-lg transition-shadow duration-300 hover:scale-105 transform transition-transform duration-300 bg-white dark:bg-[#1c1917] dark:text-white">
+              <Card key={title} className="hover:shadow-lg transition-shadow duration-300 hover:scale-105 transform transition-transform duration-300 bg-[#F7F7F8] dark:bg-[#1c1917] dark:text-white">
                 <CardHeader className="space-y-1 flex md:flex-row justify-start items-start gap-4">
                   <div className="mt-1 bg-primary/20 p-1 rounded-2xl">{icon}</div>
                   <div>
                     <CardTitle>{title}</CardTitle>
-                    <CardDescription className="text-md mt-2">
+                    <CardDescription className="text-md mt-2 dark:text-gray-300">
                       {description}
                     </CardDescription>
                   </div>
@@ -82,7 +82,10 @@ export const Services = () => {
             className="w-[300px] md:w-[500px] lg:w-[600px] object-contain"
             alt="О наших услугах"
           />
-          <Button className="w-full md:w-auto text-lg font-semibold bg-[#2dac5c] hover:bg-[#259d52] text-white transition-colors duration-300 px-6 py-3 mt-4" onClick={scrollToForm}>
+          <Button 
+            className="w-full md:w-auto text-lg font-semibold bg-[#2dac5c] hover:bg-[#259d52] text-white dark:text-black transition-colors duration-300 px-6 py-3 mt-4 rounded-[10px]" 
+            onClick={scrollToForm}
+          >
             ЗАПИСАТЬСЯ НА БЕСПЛАТНЫЙ УРОК
           </Button>
         </div>

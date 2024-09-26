@@ -48,7 +48,7 @@ const testimonials: TestimonialProps[] = [
   },
   {
     image: "https://vraki.net/sites/default/files/inline/images/10_98.jpg",
-    name: "Ана",
+    name: "Анна",
     userName: "@lavender_haze",
     comment:
       "Арсений (4 класс) занимается Python в «PRO_CODE» после Scratch. Преподаватель Роман нашёл подход к сыну, и занятия проходят с удовольствием. Уже создали несколько программ и начали работать с анимацией. Онлайн-формат оказался очень удобным.",
@@ -98,7 +98,7 @@ export const Testimonials = () => {
           ({ image, name, userName, comment, rating }: TestimonialProps) => (
             <Card
               key={userName}
-              className="max-w-md overflow-hidden hover:shadow-lg transition-shadow duration-300 text-left"
+              className="max-w-md overflow-hidden hover:shadow-lg transition-shadow duration-300 text-left bg-[#F7F7F8] dark:bg-[#1c1917]"
             >
               <CardHeader className="flex flex-row items-center gap-4 pb-2">
                 <Avatar>
@@ -117,17 +117,20 @@ export const Testimonials = () => {
               </CardHeader>
 
               <CardContent>
-                <p className="text-muted-foreground">{comment}</p>
+                <p className="text-muted-foreground dark:text-gray-300">{comment}</p>
               </CardContent>
             </Card>
           )
         )}
       </div>
       <div className="flex justify-center mt-8">
-     <Button className="w-full md:w-auto text-lg font-semibold bg-[#2dac5c] hover:bg-[#259d52] text-white transition-colors duration-300 px-6 py-3" onClick={scrollToForm}>
-       ЗАПИСАТЬСЯ НА БЕСПЛАТНЫЙ УРОК
-     </Button>
-   </div>
+        <Button 
+          className="w-full md:w-auto text-lg font-semibold bg-[#2dac5c] hover:bg-[#259d52] text-white dark:text-black transition-colors duration-300 px-6 py-3 rounded-[10px]" 
+          onClick={scrollToForm}
+        >
+          ЗАПИСАТЬСЯ НА БЕСПЛАТНЫЙ УРОК
+        </Button>
+      </div>
     </section>
   );
 };

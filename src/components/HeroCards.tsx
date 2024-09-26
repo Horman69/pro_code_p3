@@ -15,12 +15,19 @@ const scrollToForm = () => {
   document.getElementById('trial-form')?.scrollIntoView({ behavior: 'smooth' });
 };
 
-export const HeroCards = () => {
+const benefits = [
+  "Первый мини-проект",
+  "Определите направление",
+  "Узнаете о перспективах в IT",
+  "Шаг к профессиям будущего"
+];
+
+export const HeroCards: React.FC = () => {
   return (
-    <div className="hidden lg:flex flex-row flex-wrap gap-8 relative w-[700px] h-[500px]">
+    <div className="hidden lg:flex flex-row flex-wrap gap-4 lg:gap-8 relative w-full lg:w-[700px] h-[500px] lg:h-[500px]">
       
       {/* Развитие уверенности */}
-      <Card className="absolute w-[340px] -top-[40px] left-0 drop-shadow-xl shadow-black/10 dark:shadow-white/10 hover:scale-105 transition-transform duration-300">
+      <Card className="absolute w-[340px] -top-[40px] left-0 drop-shadow-xl shadow-black/10 dark:shadow-white/10 hover:transform hover:scale-105 transition-transform duration-300">
         <CardHeader className="flex flex-row items-center gap-4 pb-2">
           <Avatar>
             <AvatarImage
@@ -64,10 +71,10 @@ export const HeroCards = () => {
       </Card>
 
       {/* Бесплатный урок */}
-      <Card className="absolute top-[220px] left-[20px] w-[320px] drop-shadow-xl shadow-black/10 dark:shadow-white/10 hover:scale-105 transition-transform duration-300">
+      <Card className="absolute top-[220px] left-[20px] w-[320px] drop-shadow-xl shadow-black/10 dark:shadow-white/10 hover:transform hover:scale-105 transition-transform duration-300">
         <CardHeader>
           <CardTitle className="text-xl font-bold flex items-center justify-between">
-            Бесплатный урок
+            Бесплатный урок: начни путь в IT!
             <Zap className="text-yellow-400" size={24} />
           </CardTitle>
           <CardDescription className="text-muted-foreground dark:text-gray-300">
@@ -76,18 +83,19 @@ export const HeroCards = () => {
         </CardHeader>
         <CardContent>
           <Button 
-            className="w-full bg-[#2dac5c] hover:bg-[#259d52] text-white transition-colors duration-300" 
+            className="w-full px-8 py-4 text-lg font-semibold bg-[#259D52] hover:bg-[#1e8544] text-white dark:bg-[#259D52] dark:hover:bg-[#1e8544] dark:text-black transition-colors duration-300 rounded-[10px]" 
             onClick={scrollToForm}
+            aria-label="Записаться на бесплатный пробный урок"
           >
-            Записаться
+            ЗАПИСАТЬСЯ
           </Button>
         </CardContent>
         <CardFooter className="flex flex-col items-start">
           <ul className="space-y-2 list-none">
-            {["Первый мини-проект", "Определите направление", "Узнаете о перспективах развития в IT", "Шаг к профессиям будущего"].map(
+            {benefits.map(
               (benefit: string) => (
                 <li key={benefit} className="flex items-center">
-                  <Check className="text-[#2dac5c] mr-2" />
+                  <Check className="text-[#2dac5c] dark:text-[#38d975] mr-2" />
                   <span className="text-sm text-muted-foreground dark:text-gray-300">{benefit}</span>
                 </li>
               )

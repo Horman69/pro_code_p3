@@ -29,7 +29,10 @@ export const Hero = () => {
         </p>
 
         <div className="space-y-4 md:space-y-0 md:space-x-4">
-          <Button className="w-full md:w-auto text-lg font-semibold" onClick={scrollToForm}>
+          <Button 
+            className="w-full md:w-auto text-lg font-semibold bg-[#2dac5c] hover:bg-[#259d52] text-white dark:text-black transition-colors duration-300 px-6 py-3 rounded-[10px]" 
+            onClick={scrollToForm}
+          >
             ЗАПИСАТЬСЯ НА БЕСПЛАТНЫЙ УРОК
           </Button>
         </div>

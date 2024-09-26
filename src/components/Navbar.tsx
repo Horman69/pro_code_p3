@@ -71,7 +71,7 @@ export const Navbar = () => {
               </SheetTrigger>
               <SheetContent side="left" className="transition-transform duration-300">
                 <SheetHeader>
-                  <SheetTitle className="font-bold text-xl">АйТишка</SheetTitle>
+                  <SheetTitle className="font-bold text-xl">PRO_CODE</SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">
                   {routeList.map(({ href, label }: RouteProps) => (
@@ -87,7 +87,7 @@ export const Navbar = () => {
                   ))}
                   <a
                     rel="noreferrer noopener"
-                    href="https://t.me/Eureka_school_bot"
+                    href="https://t.me/pro_code_web3_bot"
                     target="_blank"
                     className={`w-[110px] border ${buttonVariants({
                       variant: "secondary",
@@ -119,7 +119,7 @@ export const Navbar = () => {
           <div className="hidden md:flex gap-2 items-center">
             <a
               rel="noreferrer noopener"
-              href="https://t.me/LearnCode_web3_bot"
+              href="https://t.me/pro_code_web3_bot"
               target="_blank"
               className={`border ${buttonVariants({ variant: "secondary" })} flex items-center`}
             >

@@ -1,73 +1,39 @@
-import { Radar } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Code, Gamepad2, Laptop } from "lucide-react";
+import { motion } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Button } from "./ui/button";
 
-interface SponsorProps {
+interface ProjectProps {
   icon: JSX.Element;
   name: string;
-  description: string; // Добавляем описание курса
+  description: string;
+  studentName: string;
+  projectUrl: string;
 }
 
-const sponsors: SponsorProps[] = [
+const projects: ProjectProps[] = [
   {
-    icon: <Radar size={34} />,
-    name: "Разработчик игр",
-    description: "Научитесь создавать игры с нуля.",
+    icon: <Gamepad2 size={34} />,
+    name: "Космическое приключение",
+    description: "2D платформер на Unity",
+    studentName: "Анна, 14 лет",
+    projectUrl: "https://example.com/space-adventure",
   },
   {
-    icon: <Radar size={34} />,
-    name: "Roblox",
-    description: "Создавайте свои игры на платформе Roblox.",
+    icon: <Laptop size={34} />,
+    name: "Мой первый сайт",
+    description: "Персональный блог на React",
+    studentName: "Максим, 15 лет",
+    projectUrl: "https://example.com/personal-blog",
   },
   {
-    icon: <Radar size={34} />,
-    name: "Minecraft",
-    description: "Изучите основы программирования через Minecraft.",
+    icon: <Code size={34} />,
+    name: "Умный калькулятор",
+    description: "Приложение на Python",
+    studentName: "Ольга, 13 лет",
+    projectUrl: "https://example.com/smart-calculator",
   },
-  {
-    icon: <Radar size={34} />,
-    name: "Unity",
-    description: "Разработка 2D и 3D игр с использованием Unity.",
-  },
-  {
-    icon: <Radar size={34} />,
-    name: "Программист",
-    description: "Основы программирования для начинающих.",
-  },
-  {
-    icon: <Radar size={34} />,
-    name: "3D-моделлер",
-    description: "Создание 3D моделей и анимаций.",
-  },
-  {
-    icon: <Radar size={34} />,
-    name: "Старт в IT",
-    description: "Первый шаг в мир информационных технологий.",
-  },
-  {
-    icon: <Radar size={34} />,
-    name: "Дизайнер в IT",
-    description: "Основы веб-дизайна и графики.",
-  },
-  {
-    icon: <Radar size={34} />,
-    name: "Мобильная разработка",
-    description: "Создание приложений для мобильных устройств.",
-  },
-  {
-    icon: <Radar size={34} />,
-    name: "Компьютерная грамотность",
-    description: "Основы работы с компьютером.",
-  },
-  {
-    icon: <Radar size={34} />,
-    name: "Визуальное программирование",
-    description: "Программирование без кода.",
-  },
-  {
-    icon: <Radar size={34} />,
-    name: "Нейросети",
-    description: "Введение в мир искусственного интеллекта.",
-  },
+  // Добавьте больше проектов по мере необходимости
 ];
 
 export const Sponsors = () => {
@@ -75,52 +41,48 @@ export const Sponsors = () => {
     <section
       id="sponsors"
       className="container pt-24 sm:py-32"
-      aria-label="Курсы, предлагаемые в LearnCode"
+      aria-label="Проекты наших учеников"
     >
-      <h2 className="text-center text-md lg:text-xl font-bold mb-2 text-primary">
-        НАШИ КУРСЫ
+      <h2 className="text-center text-3xl md:text-4xl font-bold mb-2 text-primary dark:text-primary-dark">
+        Проекты наших учеников
       </h2>
-      <p className="text-center text-sm md:text-md text-muted-foreground mb-8">
-        Мы предлагаем разнообразные курсы, которые помогут вам освоить востребованные навыки в IT.
+      <p className="text-center md:w-3/4 mx-auto mt-4 mb-8 text-xl text-muted-foreground">
+        Посмотрите, какие удивительные проекты создают наши ученики в процессе обучения.
       </p>
 
-      <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8">
-        {sponsors.map(({ icon, name, description }: SponsorProps) => (
-          <div
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map(({ icon, name, description, studentName, projectUrl }: ProjectProps, index) => (
+          <motion.div
             key={name}
-            className="flex flex-col items-center gap-2 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-            aria-label={name}
-            title={name}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            <span>{icon}</span>
-            <h3 className="text-xl font-bold">{name}</h3>
-            <p className="text-sm text-muted-foreground">{description}</p>
-          </div>
+            <Card
+              className="bg-[#F7F7F8] dark:bg-[#1C1917] hover:bg-muted/70 dark:hover:bg-[#2a2625] transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+            >
+              <CardHeader>
+                <CardTitle className="flex flex-col items-center gap-4 text-xl font-semibold">
+                  <span className="text-primary dark:text-primary-dark">{icon}</span>
+                  {name}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-muted-foreground dark:text-muted-foreground-dark">
+                <p>{description}</p>
+                <p className="mt-2 text-sm font-medium text-gray-700 dark:text-gray-300">Автор: {studentName}</p>
+                <Button 
+                  asChild
+                  className="mt-4 w-full text-lg font-semibold bg-[#2dac5c] hover:bg-[#259d52] text-white dark:text-black transition-colors duration-300 px-6 py-3 rounded-[10px]"
+                >
+                  <a href={projectUrl} target="_blank" rel="noopener noreferrer">
+                    Посмотреть проект
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
-
-      {/* Блок о наставнике */}
-      <section className="py-24 sm:py-32" id="mentor">
-        <h2 className="text-center text-2xl font-bold mb-4">Наш наставник</h2>
-        <div className="flex flex-col items-center">
-          <Avatar>
-            <AvatarImage
-              alt="Искендеров Руслан"
-              src="URL_К_ФОТОГРАФИИ" // Замените на реальный URL
-            />
-            <AvatarFallback>ИР</AvatarFallback>
-          </Avatar>
-          <h3 className="text-xl font-bold mt-2">Искендеров Руслан</h3>
-          <p className="text-md text-muted-foreground mb-4">Педагог по программированию</p>
-          <h4 className="font-semibold">Образование:</h4>
-          <ul className="list-disc list-inside mb-4">
-            <li>РГАЗУ, эколог</li>
-            <li>ЛИСК МГУ, специалист по кибербезопасности (спецкурс)</li>
-          </ul>
-          <h4 className="font-semibold">Опыт работы:</h4>
-          <p>Более 10 лет работы с детьми, 4 года преподавания информатики в школе, автор интерактивных методик, разработчик проектов в Roblox Studio.</p>
-        </div>
-      </section>
     </section>
   );
 };
