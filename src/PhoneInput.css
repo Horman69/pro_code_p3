@@ -12,6 +12,12 @@
     padding-left: 70px !important; /* Увеличиваем отступ слева для смещения номера вправо */
 }
 
+/* Добавляем стиль для темной темы */
+.dark .react-tel-input .form-control {
+    background-color: #2A2625 !important;
+    color: #ffffff !important; /* Изменяем цвет текста на белый для лучшей читаемости */
+}
+
 /* Стили для области с флагом */
 .react-tel-input .selected-flag {
     background-color: transparent !important;
