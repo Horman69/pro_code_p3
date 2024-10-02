@@ -82,9 +82,10 @@ export const Newsletter: React.FC = () => {
   const inputStyle = {
     width: '100%',
     height: '50px',
-    fontSize: '1.125rem',
+    fontSize: '16px',
     borderRadius: '10px',
-    border: 'none',
+    // border: '1px solid #191817',
+    color: '#71717A',
     paddingLeft: '16px',
   };
 
@@ -92,7 +93,7 @@ export const Newsletter: React.FC = () => {
     <section id="trial-form" className="py-24 sm:py-32">
       <div className="container">
         <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-black dark:text-white">
-          Попробуйте <span className="text-[#2dac5c] dark:text-[#38d975]">бесплатно!</span>
+          Попробуйте <span className="text-[#2dac5c] dark:text-[#19773b]">бесплатно!</span>
         </h2>
         <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-[#1c1917]">
           <CardContent className="p-8">
@@ -107,18 +108,30 @@ export const Newsletter: React.FC = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="bg-white dark:bg-[#2A2625] text-[#71717A] dark:text-white placeholder-[#71717A] dark:placeholder-gray-400"
                     />
                     {errors.name && <p className="text-[#FFF59E] text-sm mt-1">{errors.name}</p>}
                   </div>
                   <div>
                     <PhoneInput
-                      country={'ru'}
-                      value={formData.phone}
-                      onChange={handlePhoneChange}
+                      country={'ru'} // Устанавливаем Россию как страну по умолчанию
+                      value={formData.phone} // Значение телефона из состояния формы
+                      onChange={handlePhoneChange} // Обработчик изменения номера телефона
                       inputProps={{
                         name: 'phone',
                         required: true,
+                      }}
+                      inputStyle={{
+                        ...inputStyle,
+                        paddingLeft: '48px',
+                      }}
+                      buttonStyle={{
+                        border: 'none',
+                        background: 'transparent',
+                        borderRadius: '10px 0 0 10px',
+                        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', // Добавляем тень
+                      }}
+                      dropdownStyle={{
+                        width: 'max-content',
                       }}
                       containerStyle={{
                         width: '100%',
@@ -133,7 +146,6 @@ export const Newsletter: React.FC = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="bg-white dark:bg-[#2A2625] text-[#71717A] dark:text-white placeholder-[#71717A] dark:placeholder-gray-400"
                     />
                     {errors.email && <p className="text-[#FFF59E] text-sm mt-1">{errors.email}</p>}
                   </div>

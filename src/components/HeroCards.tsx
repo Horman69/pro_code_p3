@@ -32,7 +32,7 @@ export const HeroCards: React.FC = () => {
           <Avatar>
             <AvatarImage
               alt="Аватар ученика PRO_CODE"
-              src="https://github.com/shadcn.png"
+              src="src/assets/logo_white_4.jpg"
             />
             <AvatarFallback>УЧ</AvatarFallback>
           </Avatar>
@@ -54,7 +54,7 @@ export const HeroCards: React.FC = () => {
       <Card className="absolute right-[20px] top-4 w-80 flex flex-col justify-center items-center drop-shadow-xl shadow-black/10 dark:shadow-white/10 hover:scale-105 transition-transform duration-300">
         <CardHeader className="mt-8 flex flex-col justify-center items-center pb-2">
           <img
-            src="https://github.com/shadcn.png"
+            src="src/assets/logo_white_4.jpg"
             alt="Преподаватель PRO_CODE"
             className="absolute -top-12 rounded-full w-24 h-24 aspect-square object-cover"
           />
@@ -75,7 +75,7 @@ export const HeroCards: React.FC = () => {
         <CardHeader>
           <CardTitle className="text-xl font-bold flex items-center justify-between">
             Бесплатный урок: начни путь в IT!
-            <Zap className="text-yellow-400" size={24} />
+            <Zap className="text-yellow-400 h-16 w-16" /> {/* Изменено здесь */}
           </CardTitle>
           <CardDescription className="text-muted-foreground dark:text-gray-300">
             Запишитесь на бесплатный пробный урок вместе с ребёнком

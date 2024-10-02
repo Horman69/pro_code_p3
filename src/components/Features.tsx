@@ -106,9 +106,12 @@ export const Features = () => {
       </div>
       <div
        className="flex justify-center mt-8">
- <Button className="w-full md:w-auto text-lg font-semibold bg-[#2dac5c] hover:bg-[#259d52] text-white transition-colors duration-300 px-6 py-3" onClick={scrollToForm}>
-            ЗАПИСАТЬСЯ НА БЕСПЛАТНЫЙ УРОК
-          </Button>
+ <Button 
+  className="w-full md:w-auto text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground transition-colors duration-300 px-6 py-3" 
+  onClick={scrollToForm}
+>
+  ЗАПИСАТЬСЯ НА БЕСПЛАТНЫЙ УРОК
+</Button>
 </div>
 
     </section>
