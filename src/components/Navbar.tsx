@@ -14,7 +14,7 @@ import {
 import { buttonVariants } from "./ui/button";
 import { Menu, Send } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
-import { LogoIcon } from "./Icons";
+import logo from "../assets/logo_white_4.jpg";
 
 interface RouteProps {
   href: string;
@@ -51,14 +51,16 @@ export const Navbar = () => {
     <header className="sticky top-0 z-40 w-full bg-white dark:bg-background border-b border-gray-200 dark:border-gray-700">
       <NavigationMenu className="mx-auto">
         <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between items-center">
-          <NavigationMenuItem className="font-bold flex items-center">
-            <a
-              rel="noreferrer noopener"
-              href="/"
-              className="ml-2 font-bold text-xl flex items-center"
-            >
-              <LogoIcon />
-              PRO_CODE
+          <NavigationMenuItem className="font-bold">
+            <a href="/" className="flex items-center">
+              <img 
+                src={logo} 
+                alt="PRO_CODE Logo" 
+                className="h-8 w-8 mr-2 rounded-full object-cover"
+              />
+              <span className="text-zinc-800 dark:text-zinc-200 hover:text-primary-light dark:hover:text-primary-dark transition-colors duration-300">
+                PRO_CODE
+              </span>
             </a>
           </NavigationMenuItem>
 

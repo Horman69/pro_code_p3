@@ -1,6 +1,6 @@
-import { LogoIcon } from "./Icons";
 import { Send } from "lucide-react";
 import { Link } from 'react-router-dom';
+import logo from "../assets/logo_white_4.jpg"; // Убедитесь, что путь к логотипу правильный
 
 export const Footer = () => {
   return (
@@ -10,12 +10,17 @@ export const Footer = () => {
       <section className="container py-20 grid grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-8">
         <div className="col-span-full md:col-span-1">
           <a
-            rel="noreferrer noopener"
             href="/"
             className="font-bold text-xl flex items-center"
           >
-            <LogoIcon />
-            PRO_CODE
+            <img 
+              src={logo} 
+              alt="PRO_CODE Logo" 
+              className="h-8 w-8 mr-2 rounded-full object-cover"
+            />
+            <span className="text-zinc-800 dark:text-zinc-200 hover:text-primary transition-colors duration-300">
+              PRO_CODE
+            </span>
           </a>
           <p className="mt-4 text-muted-foreground">
             Онлайн-школа программирования для детей и подростков
@@ -65,19 +70,7 @@ export const Footer = () => {
       </section>
 
       <section className="container pb-14 text-center">
-        <h3>
-          &copy; {new Date().getFullYear()}{" "}
-          <a
-            rel="noreferrer noopener"
-            target="_blank"
-            href="https://t.me/pro_code_web3_bot"
-            className="text-primary transition-all border-primary hover:border-b-2"
-          >
-            PRO_CODE
-          </a>
-          . Все права защищены.
-        </h3>
-        <div className="mt-4">
+      <div className="mt-4">
           <Link to="/privacy-policy" className="text-primary mr-4 hover:underline">
             Политика конфиденциальности
           </Link>
@@ -85,6 +78,16 @@ export const Footer = () => {
             Условия использования
           </Link>
         </div>
+        <h3>
+          &copy; {new Date().getFullYear()}{" "}
+          <a
+            href="/"
+            className="text-primary transition-all border-primary hover:border-b-2"
+          >
+            PRO_CODE
+          </a>
+          . Все права защищены.
+        </h3>
       </section>
     </footer>
   );
