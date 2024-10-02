@@ -71,3 +71,24 @@ html {
     transform: scale(0.8);
   }
 }
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #6b3fa0;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cookie-banner button {
+  padding: 5px 10px;
+  margin-left: 10px;
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}

@@ -2,26 +2,23 @@ import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 
-interface TeamProps {
+interface TeamMember {
   imageUrl: string;
   name: string;
   position: string;
-  socialNetworks?: SociaNetworkslProps[];
+  socialNetworks?: SocialNetwork[];
 }
 
-interface SociaNetworkslProps {
+interface SocialNetwork {
   name: string;
   url: string;
 }
 
-const teamList: TeamProps[] = [
+const teamList: TeamMember[] = [
   {
     imageUrl: "https://storedigital.ru/wp-content/uploads/2020/02/2nd.png",
     name: "Анна Петрова",
@@ -54,15 +51,16 @@ const teamList: TeamProps[] = [
   },
 ];
 
-export const Team = () => {
-  const socialIcon = (iconName: string) => {
-    switch (iconName) {
-      case "Linkedin": return <Linkedin size="20" />;
-      case "Facebook": return <Facebook size="20" />;
-      case "Instagram": return <Instagram size="20" />;
-    }
-  };
+const socialIcon = (iconName: string) => {
+  switch (iconName) {
+    case "Linkedin": return <Linkedin size="20" />;
+    case "Facebook": return <Facebook size="20" />;
+    case "Instagram": return <Instagram size="20" />;
+    default: return null;
+  }
+};
 
+export const Team = () => {
   return (
     <section id="team" className="container py-24 sm:py-32" aria-label="Наша команда">
       <header className="text-center mb-12">
@@ -73,8 +71,8 @@ export const Team = () => {
         </h2>
       </header>
 
-      <div className="flex justify-center items-start gap-8 mb-12">
-        {teamList.map(({ imageUrl, name, position, socialNetworks }: TeamProps, index) => (
+      <div className="flex flex-wrap justify-center items-start gap-8 mb-12">
+        {teamList.map(({ imageUrl, name, position }) => (
           <div key={name} className="flex flex-col items-center">
             <img
               src={imageUrl}
@@ -87,17 +85,17 @@ export const Team = () => {
         ))}
       </div>
 
-      <Card className="bg-[#F7F7F8] dark:bg-[#1c1917] max-w-3xl mx-auto">
+      <Card className="bg-[#F7F7F8] dark:bg-[#1c1917] dark:text-white max-w-3xl mx-auto hover:shadow-xl hover:scale-105 transition-all duration-300">
         <CardContent className="text-center py-6">
-          <p className="text-lg text-muted-foreground mb-4">
+          <p className="text-lg text-muted-foreground dark:text-gray-300 mb-4">
             Миссия нашей команды — помочь детям стать творцами в мире технологий, научив их программировать, решать сложные задачи и воплощать идеи в жизнь. Мы с командой создаём курсы, основанные на реальных задачах, чтобы каждый ученик мог создавать собственные проекты, участвовать в конкурсах и хакатонах, раскрывая свой потенциал.
           </p>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground dark:text-gray-300">
             Наши курсы — это не просто уроки программирования, это возможность шагнуть в мир инноваций, где каждый ребёнок получает поддержку, мотивацию и знания, необходимые для успешного будущего в IT.
           </p>
         </CardContent>
         <CardFooter className="justify-center">
-          {teamList[2].socialNetworks?.map(({ name, url }: SociaNetworkslProps) => (
+          {teamList[2].socialNetworks?.map(({ name, url }) => (
             <a
               key={name}
               rel="noreferrer noopener"
