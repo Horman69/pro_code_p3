@@ -91,16 +91,16 @@ export const Newsletter: React.FC = () => {
   };
 
   return (
-    <section id="trial-form" className="py-24 sm:py-32">
-      <div className="container">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-black dark:text-white">
+    <section id="trial-form" className="py-12 sm:py-24">
+      <div className="container px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center text-black dark:text-white">
           Попробуйте <span className="text-[#2dac5c] dark:text-[#19773b]">бесплатно!</span>
         </h2>
         <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-[#1c1917]">
-          <CardContent className="p-8">
-            <div className="grid lg:grid-cols-2 gap-8">
-              <div className="bg-[#2dac5c] dark:bg-[#19773b] text-white p-6 rounded-lg">
-                <CardTitle className="text-2xl mb-4">Заполните форму</CardTitle>
+          <CardContent className="p-4 sm:p-6 md:p-8">
+            <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
+              <div className="bg-[#2dac5c] dark:bg-[#19773b] text-white p-4 sm:p-6 rounded-lg">
+                <CardTitle className="text-xl sm:text-2xl mb-4">Заполните форму</CardTitle>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <Input
@@ -184,7 +184,7 @@ export const Newsletter: React.FC = () => {
               </div>
               
               <div className="flex flex-col gap-4">
-                <h3 className="text-2xl font-semibold text-black dark:text-white mb-4">
+                <h3 className="text-xl sm:text-2xl font-semibold text-black dark:text-white mb-4">
                   Мы свяжемся с вами в течение дня
                 </h3>
                 {steps.map((step, index) => (
@@ -192,20 +192,20 @@ export const Newsletter: React.FC = () => {
                     key={index}
                     className="hover:shadow-lg transition-all duration-300 hover:scale-105 transform bg-gray-100 dark:bg-[#2a2625] cursor-pointer group"
                   >
-                    <CardHeader className="flex flex-row items-center space-y-0 gap-4">
-                      <div className="w-8 h-8 rounded-full bg-[#2dac5c]/20 dark:bg-[#19773b]/20 flex items-center justify-center text-[#2dac5c] dark:text-[#19773b] group-hover:bg-[#2dac5c] dark:group-hover:bg-[#19773b] group-hover:text-white transition-all duration-300">
-                        <span className="text-lg font-semibold">{index + 1}</span>
+                    <CardHeader className="flex flex-row items-center space-y-0 gap-2 sm:gap-4 p-3 sm:p-4">
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-[#2dac5c]/20 dark:bg-[#19773b]/20 flex items-center justify-center text-[#2dac5c] dark:text-[#19773b] group-hover:bg-[#2dac5c] dark:group-hover:bg-[#19773b] group-hover:text-white transition-all duration-300">
+                        <span className="text-base sm:text-lg font-semibold">{index + 1}</span>
                       </div>
-                      <CardTitle className="text-lg text-zinc-600 dark:text-zinc-400">{step}</CardTitle>
+                      <CardTitle className="text-sm sm:text-base lg:text-lg text-zinc-600 dark:text-zinc-400">{step}</CardTitle>
                     </CardHeader>
                   </Card>
                 ))}
                 
                 <Button
-                  className="w-full mt-4 px-8 py-4 text-xl font-bold bg-[#2dac5c] hover:bg-[#259d52] text-white dark:text-black transition-colors duration-300 rounded-[10px] flex items-center justify-center gap-2"
+                  className="w-full mt-4 px-4 sm:px-8 py-3 sm:py-4 text-lg sm:text-xl font-bold bg-[#2dac5c] hover:bg-[#259d52] text-white dark:text-black transition-colors duration-300 rounded-[10px] flex items-center justify-center gap-2"
                   onClick={() => window.location.href = 'https://t.me/PRO_CODE_web3_bot'}
                 >
-                  <Send size={24} />
+                  <Send size={20} className="sm:w-6 sm:h-6" />
                   СВЯЗАТЬСЯ С НАМИ
                 </Button>
               </div>
