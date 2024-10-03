@@ -65,7 +65,7 @@ export const Newsletter: React.FC = () => {
     if (Object.values(errors).every(error => !error) && isAgreed) {
       setIsSubmitting(true);
       try {
-        const response = await fetch('https://66fe7bfca7c97300089b3be8--pro-code-0.netlify.app/.netlify/functions/submitForm', {
+        const response = await fetch('/.netlify/functions/submitForm', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ export const Newsletter: React.FC = () => {
         }
       } catch (error) {
         console.error('Error:', error);
-        alert(`Произошла ошибка при отправке заявки: ${error instanceof Error ? error.message : 'Неизвестная ошибка'}`);
+        alert(`Произошла ошибка при отправке заявки: ${error.message}`);
       } finally {
         setIsSubmitting(false);
       }
