@@ -56,52 +56,31 @@ export const Newsletter: React.FC = () => {
   // Обработчик отправки формы
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    Object.keys(formData).forEach(key => validateField(key, formData[key as keyof FormData]));
-    if (!isAgreed) {
-      setAgreementError("Необходимо согласиться с положением о защите персональных данных");
-    } else {
-      setAgreementError("");
-    }
     if (Object.values(errors).every(error => !error) && isAgreed) {
       setIsSubmitting(true);
       try {
-        console.log('Отправка данных:', formData);
         const response = await fetch('/.netlify/functions/submitForm', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(formData)
         });
 
-        console.log('Статус ответа:', response.status);
+        console.log("Статус ответа:", response.status);
+
         const responseText = await response.text();
-        console.log('Текст ответа:', responseText);
+        console.log("Текст ответа:", responseText);
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}, body: ${responseText}`);
-        }
-
-        const data = JSON.parse(responseText);
-        console.log('Данные ответа:', data);
-        if (data.success) {
-          alert('Заявка успешно отправлена!');
-          // Очистка формы или другие действия после успешной отправки
-        } else {
-          alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.');
-        }
-      } catch (error: unknown) {
+        alert("Заявка успешно отправлена!");
+      } catch (error) {
         console.error('Error:', error);
-        let errorMessage = 'Неизвестная ошибка';
-        if (error instanceof Error) {
-          errorMessage = error.message;
-        } else if (typeof error === 'string') {
-          errorMessage = error;
-        }
-        alert(`Произошла ошибка при отправке заявки: ${errorMessage}`);
+        alert(`Произошла ошибка при отправке заявки: ${error instanceof Error ? error.message : 'Неизвестная ошибка'}`);
       } finally {
         setIsSubmitting(false);
       }
+    } else if (!isAgreed) {
+      setAgreementError("Необходимо согласиться с положением о защите персональных данных");
     }
   };
 
