@@ -65,6 +65,7 @@ export const Newsletter: React.FC = () => {
     if (Object.values(errors).every(error => !error) && isAgreed) {
       setIsSubmitting(true);
       try {
+        console.log('Отправка данных:', formData); // Логирование отправляемых данных
         const response = await fetch('/.netlify/functions/submitForm', {
           method: 'POST',
           headers: {
@@ -72,16 +73,35 @@ export const Newsletter: React.FC = () => {
           },
           body: JSON.stringify(formData),
         });
-        const data = await response.json();
+
+        console.log('Статус ответа:', response.status); // Логирование статуса ответа
+
+        const responseText = await response.text();
+        console.log('Текст ответа:', responseText); // Логирование текста ответа
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}, body: ${responseText}`);
+        }
+
+        let data;
+        try {
+          data = JSON.parse(responseText);
+        } catch (parseError) {
+          console.error('Ошибка парсинга JSON:', parseError);
+          throw new Error('Получен некорректный ответ от сервера');
+        }
+
         if (data.success) {
           alert('Заявка успешно отправлена!');
           // Очистка формы или другие действия после успешной отправки
+          setFormData({ name: "", phone: "", email: "" });
+          setIsAgreed(false);
         } else {
-          alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.');
+          alert(`Произошла ошибка при отправке заявки: ${data.error || 'Неизвестная ошибка'}`);
         }
       } catch (error) {
         console.error('Error:', error);
-        alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.');
+        alert(`Произошла ошибка при отправке заявки: ${error instanceof Error ? error.message : 'Неизвестная ошибка'}`);
       } finally {
         setIsSubmitting(false);
       }
