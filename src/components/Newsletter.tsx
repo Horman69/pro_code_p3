@@ -59,20 +59,22 @@ export const Newsletter: React.FC = () => {
     if (Object.values(errors).every(error => !error) && isAgreed) {
       setIsSubmitting(true);
       try {
-        const response = await fetch('/.netlify/functions/submitForm', {
+        const form = e.target as HTMLFormElement;
+        const formData = new FormData(form);
+        
+        const response = await fetch('/', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData)
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData as any).toString()
         });
-
-        console.log("Статус ответа:", response.status);
-
-        const responseText = await response.text();
-        console.log("Текст ответа:", responseText);
-
-        alert("Заявка успешно отправлена!");
+        
+        if (response.ok) {
+          alert("Заявка успешно отправлена!");
+          // Очистка формы
+          setFormData({ name: "", phone: "", email: "" });
+        } else {
+          throw new Error('Ошибка при отправке формы');
+        }
       } catch (error) {
         console.error('Error:', error);
         alert(`Произошла ошибка при отправке заявки: ${error instanceof Error ? error.message : 'Неизвестная ошибка'}`);
@@ -115,7 +117,8 @@ export const Newsletter: React.FC = () => {
             <div className="grid lg:grid-cols-2 gap-8">
               <div className="bg-[#2dac5c] dark:bg-[#19773b] text-white p-6 rounded-lg">
                 <CardTitle className="text-2xl mb-4">Заполните форму</CardTitle>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-4" name="contact" method="POST" data-netlify="true">
+                  <input type="hidden" name="form-name" value="contact" />
                   <div>
                     <Input
                       style={inputStyle}
@@ -123,19 +126,19 @@ export const Newsletter: React.FC = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="dark:text-black focus:outline-none focus:ring-0" // Убираем фокус и обводку
+                      className="dark:text-black focus:outline-none focus:ring-0"
                     />
                     {errors.name && <p className="text-[#FFF59E] text-sm mt-1">{errors.name}</p>}
                   </div>
                   <div>
                     <PhoneInput
-                      country={'ru'} // Устанавливаем Россию как страну по умолчанию
-                      value={formData.phone} // Значение телефона из состояния формы
-                      onChange={handlePhoneChange} // Обработчик изменения номера телефона
+                      country={'ru'}
+                      value={formData.phone}
+                      onChange={handlePhoneChange}
                       inputProps={{
                         name: 'phone',
                         required: true,
-                        className: 'dark:text-black focus:outline-none focus:ring-0', // Убираем фокус и обводку
+                        className: 'dark:text-black focus:outline-none focus:ring-0',
                       }}
                       inputStyle={{
                         ...inputStyle,
@@ -163,7 +166,7 @@ export const Newsletter: React.FC = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="dark:text-black focus:outline-none focus:ring-0" // Убираем фокус и обводку
+                      className="dark:text-black focus:outline-none focus:ring-0"
                     />
                     {errors.email && <p className="text-[#FFF59E] text-sm mt-1">{errors.email}</p>}
                   </div>
