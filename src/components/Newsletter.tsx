@@ -4,7 +4,6 @@ import { Input } from "./ui/input";
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/bootstrap.css'
-import '../PhoneInput.css';
 import { Send } from "lucide-react";
 
 interface FormData {
@@ -84,9 +83,11 @@ export const Newsletter: React.FC = () => {
     height: '50px',
     fontSize: '16px',
     borderRadius: '10px',
-    // border: '1px solid #191817',
     color: '#71717A',
     paddingLeft: '16px',
+    backgroundColor: 'white',
+    border: 'none', // Убираем границу
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', // Добавляем тень
   };
 
   return (
@@ -108,6 +109,7 @@ export const Newsletter: React.FC = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
+                      className="dark:text-white focus:outline-none focus:ring-0" // Светлый текст для темной темы
                     />
                     {errors.name && <p className="text-[#FFF59E] text-sm mt-1">{errors.name}</p>}
                   </div>
@@ -119,6 +121,7 @@ export const Newsletter: React.FC = () => {
                       inputProps={{
                         name: 'phone',
                         required: true,
+                        className: 'dark:text-white focus:outline-none focus:ring-0', // Светлый текст для темной темы
                       }}
                       inputStyle={{
                         ...inputStyle,
@@ -128,14 +131,17 @@ export const Newsletter: React.FC = () => {
                         border: 'none',
                         background: 'transparent',
                         borderRadius: '10px 0 0 10px',
-                        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', // Добавляем тень
+                        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
                       }}
                       dropdownStyle={{
                         width: 'max-content',
+                        backgroundColor: 'white', // Белый фон для выпадающего списка
+                        color: 'black', // Черный текст для светлой темы
                       }}
                       containerStyle={{
                         width: '100%',
                       }}
+                      countryCodeEditable={false} // Запрещаем редактирование кода страны
                     />
                     {errors.phone && <p className="text-[#FFF59E] text-sm mt-1">{errors.phone}</p>}
                   </div>
@@ -146,6 +152,7 @@ export const Newsletter: React.FC = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
+                      className="dark:text-white focus:outline-none focus:ring-0" // Светлый текст для темной темы
                     />
                     {errors.email && <p className="text-[#FFF59E] text-sm mt-1">{errors.email}</p>}
                   </div>
