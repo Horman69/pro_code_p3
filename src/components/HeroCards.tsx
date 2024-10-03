@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { LightBulbIcon } from "./Icons";
 
+
 const scrollToForm = () => {
   document.getElementById('trial-form')?.scrollIntoView({ behavior: 'smooth' });
 };
@@ -32,7 +33,7 @@ export const HeroCards: React.FC = () => {
           <Avatar>
             <AvatarImage
               alt="Аватар ученика PRO_CODE"
-              src="src/assets/logo_white_4.jpg"
+              src="/logo_white_4.jpg"
             />
             <AvatarFallback>УЧ</AvatarFallback>
           </Avatar>
@@ -54,7 +55,7 @@ export const HeroCards: React.FC = () => {
       <Card className="absolute right-[20px] top-4 w-80 flex flex-col justify-center items-center drop-shadow-xl shadow-black/10 dark:shadow-white/10 hover:scale-105 transition-transform duration-300">
         <CardHeader className="mt-8 flex flex-col justify-center items-center pb-2">
           <img
-            src="src/assets/logo_white_4.jpg"
+            src="/logo_white_4.jpg"
             alt="Преподаватель PRO_CODE"
             className="absolute -top-12 rounded-full w-24 h-24 aspect-square object-cover"
           />

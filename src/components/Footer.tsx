@@ -1,6 +1,6 @@
 import { Send } from "lucide-react";
 import { Link } from 'react-router-dom';
-import logo from "../assets/logo_white_4.jpg"; // Убедитесь, что путь к логотипу правильный
+ // Убедитесь, что путь к логотипу правильный
 
 export const Footer = () => {
   return (
@@ -14,7 +14,7 @@ export const Footer = () => {
             className="font-bold text-xl flex items-center"
           >
             <img 
-              src={logo} 
+              src="/logo_white_4.jpg"
               alt="PRO_CODE Logo" 
               className="h-8 w-8 mr-2 rounded-full object-cover"
             />

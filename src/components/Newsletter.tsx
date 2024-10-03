@@ -109,7 +109,7 @@ export const Newsletter: React.FC = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="dark:text-white focus:outline-none focus:ring-0" // Светлый текст для темной темы
+                      className="dark:text-black focus:outline-none focus:ring-0" // Убираем фокус и обводку
                     />
                     {errors.name && <p className="text-[#FFF59E] text-sm mt-1">{errors.name}</p>}
                   </div>
@@ -121,7 +121,7 @@ export const Newsletter: React.FC = () => {
                       inputProps={{
                         name: 'phone',
                         required: true,
-                        className: 'dark:text-white focus:outline-none focus:ring-0', // Светлый текст для темной темы
+                        className: 'dark:text-black focus:outline-none focus:ring-0', // Убираем фокус и обводку
                       }}
                       inputStyle={{
                         ...inputStyle,
@@ -135,13 +135,10 @@ export const Newsletter: React.FC = () => {
                       }}
                       dropdownStyle={{
                         width: 'max-content',
-                        backgroundColor: 'white', // Белый фон для выпадающего списка
-                        color: 'black', // Черный текст для светлой темы
                       }}
                       containerStyle={{
                         width: '100%',
                       }}
-                      countryCodeEditable={false} // Запрещаем редактирование кода страны
                     />
                     {errors.phone && <p className="text-[#FFF59E] text-sm mt-1">{errors.phone}</p>}
                   </div>
@@ -152,7 +149,7 @@ export const Newsletter: React.FC = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="dark:text-white focus:outline-none focus:ring-0" // Светлый текст для темной темы
+                      className="dark:text-black focus:outline-none focus:ring-0" // Убираем фокус и обводку
                     />
                     {errors.email && <p className="text-[#FFF59E] text-sm mt-1">{errors.email}</p>}
                   </div>
