@@ -85,9 +85,13 @@ export const Newsletter: React.FC = () => {
         } else {
           alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.');
         }
-      } catch (error) {
+      } catch (error: unknown) {
         console.error('Error:', error);
-        alert(`Произошла ошибка при отправке заявки: ${error.message}`);
+        let errorMessage = 'Произошла неизвестная ошибка при отправке заявки';
+        if (error instanceof Error) {
+          errorMessage = error.message;
+        }
+        alert(`Произошла ошибка при отправке заявки: ${errorMessage}`);
       } finally {
         setIsSubmitting(false);
       }
