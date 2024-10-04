@@ -14,54 +14,24 @@ interface FormData {
 
 export const Newsletter: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({ name: "", phone: "", email: "" });
-  const [errors, setErrors] = useState<Partial<FormData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAgreed, setIsAgreed] = useState(false);
   const [agreementError, setAgreementError] = useState("");
 
-  // Обработчик изменения значений в полях ввода
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    validateField(name, value);
   };
 
-  // Обработчик изменения значения в поле ввода телефона
   const handlePhoneChange = (value: string) => {
     setFormData(prev => ({ ...prev, phone: value }));
-    validateField('phone', value);
   };
 
-  // Валидация полей формы
-  const validateField = (name: string, value: string) => {
-    let error = "";
-    switch (name) {
-      case "name":
-        if (!value.trim()) error = "Необходимо указать имя";
-        break;
-      case "phone":
-        if (!value.trim() || value.replace(/\D/g, '').length < 10) {
-          error = "Необходимо указать верный телефон";
-        }
-        break;
-      case "email":
-        if (!value.trim() || !/\S+@\S+\.\S+/.test(value)) {
-          error = "Необходимо указать верный email";
-        }
-        break;
-    }
-    setErrors(prev => ({ ...prev, [name]: error }));
-  };
-
-  // Обработчик отправки формы
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (Object.values(errors).every(error => !error) && isAgreed) {
+    if (isAgreed) {
       setIsSubmitting(true);
       try {
-        const form = e.target as HTMLFormElement;
-        const formData = new FormData(form);
-        
         const response = await fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -70,7 +40,6 @@ export const Newsletter: React.FC = () => {
         
         if (response.ok) {
           alert("Заявка успешно отправлена!");
-          // Очистка формы
           setFormData({ name: "", phone: "", email: "" });
         } else {
           throw new Error('Ошибка при отправке формы');
@@ -81,19 +50,17 @@ export const Newsletter: React.FC = () => {
       } finally {
         setIsSubmitting(false);
       }
-    } else if (!isAgreed) {
+    } else {
       setAgreementError("Необходимо согласиться с положением о защите персональных данных");
     }
   };
 
-  // Шаги процесса
   const steps = [
     "Перезвоним и поможем подобрать курс",
     "Запишем на бесплатные пробные занятия",
     "После рассчитаем финальную стоимость с учетом возможных льгот",
   ];
 
-  // Стили для полей ввода
   const inputStyle = {
     width: '100%',
     height: '50px',
@@ -102,8 +69,8 @@ export const Newsletter: React.FC = () => {
     color: '#71717A',
     paddingLeft: '16px',
     backgroundColor: 'white',
-    border: 'none', // Убираем границу
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', // Добавляем тень
+    border: 'none',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   };
 
   return (
@@ -117,7 +84,7 @@ export const Newsletter: React.FC = () => {
             <div className="grid lg:grid-cols-2 gap-8">
               <div className="bg-[#2dac5c] dark:bg-[#19773b] text-white p-6 rounded-lg">
                 <CardTitle className="text-2xl mb-4">Заполните форму</CardTitle>
-                <form onSubmit={handleSubmit} className="space-y-4" name="contact" method="POST" data-netlify="true">
+                <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit} className="space-y-4">
                   <input type="hidden" name="form-name" value="contact" />
                   <div>
                     <Input
@@ -128,7 +95,6 @@ export const Newsletter: React.FC = () => {
                       onChange={handleChange}
                       className="dark:text-black focus:outline-none focus:ring-0"
                     />
-                    {errors.name && <p className="text-[#FFF59E] text-sm mt-1">{errors.name}</p>}
                   </div>
                   <div>
                     <PhoneInput
@@ -157,7 +123,6 @@ export const Newsletter: React.FC = () => {
                         width: '100%',
                       }}
                     />
-                    {errors.phone && <p className="text-[#FFF59E] text-sm mt-1">{errors.phone}</p>}
                   </div>
                   <div>
                     <Input
@@ -168,7 +133,6 @@ export const Newsletter: React.FC = () => {
                       onChange={handleChange}
                       className="dark:text-black focus:outline-none focus:ring-0"
                     />
-                    {errors.email && <p className="text-[#FFF59E] text-sm mt-1">{errors.email}</p>}
                   </div>
                   <Button
                     className="w-full h-[50px] py-3 bg-yellow-500 hover:bg-yellow-600 text-black transition-colors duration-300 text-lg font-semibold rounded-[10px]"
