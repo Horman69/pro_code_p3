@@ -166,7 +166,7 @@ export const Newsletter: React.FC = () => {
                     {errors.email && <p className="text-[#FFF59E] text-sm mt-1">{errors.email}</p>}
                   </div>
                   <Button
-                    className="w-full h-[50px] py-3 bg-yellow-500 hover:bg-yellow-600 text-black transition-colors duration-300 text-lg font-semibold rounded-[10px]"
+                    className="w-full h-[50px] py-3 bg-yellow-500 hover:bg-yellow-600 text-black transition-colors duration-300 text-base sm:text-lg font-semibold rounded-[10px]"
                     type="submit"
                     disabled={isSubmitting}
                   >
@@ -214,10 +214,10 @@ export const Newsletter: React.FC = () => {
                 ))}
                 
                 <Button
-                  className="w-full mt-4 px-8 py-4 text-xl font-bold bg-[#2dac5c] hover:bg-[#259d52] text-white dark:text-black transition-colors duration-300 rounded-[10px] flex items-center justify-center gap-2"
+                  className="w-full mt-4 px-4 sm:px-8 py-3 sm:py-4 text-base sm:text-xl font-bold bg-[#2dac5c] hover:bg-[#259d52] text-white dark:text-black transition-colors duration-300 rounded-[10px] flex items-center justify-center gap-2"
                   onClick={() => window.location.href = 'https://t.me/PRO_CODE_web3_bot'}
                 >
-                  <Send size={24} />
+                  <Send size={20} className="sm:size-24" />
                   СВЯЗАТЬСЯ С НАМИ
                 </Button>
               </div>

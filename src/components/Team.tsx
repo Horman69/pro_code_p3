@@ -19,16 +19,16 @@ interface SocialNetwork {
 }
 
 const teamList: TeamMember[] = [
-  {
-    imageUrl: "https://storedigital.ru/wp-content/uploads/2020/02/2nd.png",
-    name: "Анна Петрова",
-    position: "Python разработчик",
-  },
-  {
-    imageUrl: "https://storedigital.ru/wp-content/uploads/2020/02/1st.png",
-    name: "Михаил Сидоров",
-    position: "Web-разработчик",
-  },
+  // {
+  //   imageUrl: "https://storedigital.ru/wp-content/uploads/2020/02/2nd.png",
+  //   name: "Анна Петрова",
+  //   position: "Python разработчик",
+  // },
+  // {
+  //   imageUrl: "https://storedigital.ru/wp-content/uploads/2020/02/1st.png",
+  //   name: "Михаил Сидоров",
+  //   position: "Web-разработчик",
+  // },
   {
     imageUrl: "https://sun6-23.userapi.com/impg/2mv8R5sPSnbLR_7zDERcA4SkJ6fqcO0pKLwJNg/Wzc8aqLNd7s.jpg?size=960x1280&quality=95&sign=327cf3a4e42bb498d4081bca2e81f77e&type=album",
     name: "Искендеров Руслан",
@@ -39,16 +39,16 @@ const teamList: TeamMember[] = [
       { name: "Instagram", url: "https://www.instagram.com/norman.p3" },
     ],
   },
-  {
-    imageUrl: "https://twizz.ru/wp-content/uploads/2019/02/bez-nazvaniya-2.jpg",
-    name: "Елена Иванова",
-    position: "Game-разработчик",
-  },
-  {
-    imageUrl: "https://sun9-68.userapi.com/impg/zEI2UMqTVuz-X_UZ6-xq5mAsvYKRbxz_BEjP8Q/IuBCIZjo02w.jpg?size=300x300&quality=96&sign=713ef13cfcef2c95a2cc567f109cf83b&type=album",
-    name: "Дмитрий Козлов",
-    position: "3D-моделлер",
-  },
+  // {
+  //   imageUrl: "https://twizz.ru/wp-content/uploads/2019/02/bez-nazvaniya-2.jpg",
+  //   name: "Елена Иванова",
+  //   position: "Game-разработчик",
+  // },
+  // {
+  //   imageUrl: "https://sun9-68.userapi.com/impg/zEI2UMqTVuz-X_UZ6-xq5mAsvYKRbxz_BEjP8Q/IuBCIZjo02w.jpg?size=300x300&quality=96&sign=713ef13cfcef2c95a2cc567f109cf83b&type=album",
+  //   name: "Дмитрий Козлов",
+  //   position: "3D-моделлер",
+  // },
 ];
 
 const socialIcon = (iconName: string) => {
@@ -95,7 +95,7 @@ export const Team = () => {
           </p>
         </CardContent>
         <CardFooter className="justify-center">
-          {teamList[2].socialNetworks?.map(({ name, url }) => (
+          {teamList[0].socialNetworks?.map(({ name, url }) => (
             <a
               key={name}
               rel="noreferrer noopener"
