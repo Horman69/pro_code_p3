@@ -102,16 +102,16 @@ export const Newsletter: React.FC = () => {
   };
 
   return (
-    <section id="trial-form" className="py-24 sm:py-32">
-      <div className="container">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-black dark:text-white">
+    <section id="trial-form" className="py-12 sm:py-16 md:py-24">
+      <div className="container px-4 mx-auto">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-center text-black dark:text-white">
           Попробуйте <span className="text-[#2dac5c] dark:text-[#19773b]">бесплатно!</span>
         </h2>
         <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-[#1c1917]">
-          <CardContent className="p-8">
-            <div className="grid lg:grid-cols-2 gap-8">
-              <div className="bg-[#2dac5c] dark:bg-[#19773b] text-white p-6 rounded-lg">
-                <CardTitle className="text-2xl mb-4">Заполните форму</CardTitle>
+          <CardContent className="p-4 sm:p-6 md:p-8">
+            <div className="flex flex-col lg:flex-row gap-8">
+              <div className="bg-[#2dac5c] dark:bg-[#19773b] text-white p-4 sm:p-6 rounded-lg lg:w-1/2">
+                <CardTitle className="text-xl sm:text-2xl mb-4">Заполните форму</CardTitle>
                 <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit} className="space-y-4">
                   <input type="hidden" name="form-name" value="contact" />
                   <div>
@@ -195,8 +195,8 @@ export const Newsletter: React.FC = () => {
                 </form>
               </div>
               
-              <div className="flex flex-col gap-4">
-                <h3 className="text-2xl font-semibold text-black dark:text-white mb-4">
+              <div className="flex flex-col gap-4 lg:w-1/2">
+                <h3 className="text-xl sm:text-2xl font-semibold text-black dark:text-white mb-4">
                   Мы свяжемся с вами в течение дня
                 </h3>
                 {steps.map((step, index) => (
