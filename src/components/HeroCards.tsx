@@ -52,7 +52,7 @@ export const HeroCards: React.FC = () => {
       </Card>
 
       {/* Учимся один на один */}
-      <Card className="absolute right-[20px] top-4 w-80 flex flex-col justify-center items-center drop-shadow-xl shadow-black/10 dark:shadow-white/10 hover:scale-105 transition-transform duration-300">
+      <Card className="absolute right-[20px] top-0 w-80 flex flex-col justify-center items-center drop-shadow-xl shadow-black/10 dark:shadow-white/10 hover:scale-105 transition-transform duration-300">
         <CardHeader className="mt-8 flex flex-col justify-center items-center pb-2">
           <img
             src="/logo_white_4.jpg"
@@ -106,7 +106,7 @@ export const HeroCards: React.FC = () => {
       </Card>
 
       {/* Время с пользой */}
-      <Card className="absolute w-[350px] -right-[10px] bottom-[35px] drop-shadow-xl shadow-black/10 dark:shadow-white/10 hover:scale-105 transition-transform duration-300">
+      <Card className="absolute w-[350px] -right-[10px] top-[260px] drop-shadow-xl shadow-black/10 dark:shadow-white/10 hover:scale-105 transition-transform duration-300">
         <CardHeader className="space-y-1 flex md:flex-row justify-start items-start gap-4">
           <div className="mt-1 bg-primary/20 p-1 rounded-2xl">
             <LightBulbIcon />
