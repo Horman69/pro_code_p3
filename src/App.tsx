@@ -10,7 +10,7 @@ import { Navbar } from "./components/Navbar";
 import { Newsletter } from "./components/Newsletter";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { Services } from "./components/Services";
-import { Sponsors } from "./components/Sponsors";
+//import { Sponsors } from "./components/Sponsors";
 import { Team } from "./components/Team";
 import { Testimonials } from "./components/Testimonials";
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -27,7 +27,7 @@ function HomePage() {
       <Features />
       <About />
       <Testimonials />
-      <Sponsors />
+      {/* <Sponsors /> */}
       <Team />
       <Newsletter />
       <FAQ />
