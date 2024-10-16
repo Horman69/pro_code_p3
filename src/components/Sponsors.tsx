@@ -1,12 +1,11 @@
-import { Code, Gamepad2, Laptop, Globe, Database, Bot, ChartBar, Camera, Music, Smartphone } from "lucide-react";
+import { Code, Gamepad2, Laptop, Globe, Database, Bot, ChartBar, Camera, Music, Smartphone, Cloud, PenTool, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
+import { useState } from 'react';
+import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-coverflow';
 
 interface ProjectProps {
   icon: JSX.Element;
@@ -48,16 +47,16 @@ const projects: ProjectProps[] = [
   {
     icon: <Database size={34} />,
     name: "Школьная библиотека",
-    description: "База данных на SQL",
+    description: "База днных на SQL",
     studentName: "Елена, 15 лет",
     projectUrl: "https://example.com/school-library",
   },
   {
-    icon: <Bot size={34} />, // Заменяем Robot на Bot
-    name: "Умный помощник",
-    description: "Чат-бот на Python",
+    icon: <Bot size={34} />,
+    name: "Чат-бот помощник",
+    description: "AI-бот на Python",
     studentName: "Артем, 14 лет",
-    projectUrl: "https://example.com/smart-assistant",
+    projectUrl: "https://example.com/ai-chatbot",
   },
   {
     icon: <ChartBar size={34} />,
@@ -87,13 +86,27 @@ const projects: ProjectProps[] = [
     studentName: "Алексей, 15 лет",
     projectUrl: "https://example.com/mobile-puzzle",
   },
+  {
+    icon: <Cloud size={34} />,
+    name: "Погодное приложение",
+    description: "Прогноз погоды с API",
+    studentName: "Наталья, 14 лет",
+    projectUrl: "https://example.com/weather-app",
+  },
+  {
+    icon: <PenTool size={34} />,
+    name: "Векторный редактор",
+    description: "Онлайн-инструмент на SVG",
+    studentName: "Кирилл, 16 лет",
+    projectUrl: "https://example.com/vector-editor",
+  },
 ];
 
 export const Sponsors = () => {
   return (
     <section
       id="sponsors"
-      className="container pt-24 sm:py-32"
+      className="container pt-24 sm:py-32 relative overflow-x-hidden"
       aria-label="Проекты наших учеников"
     >
       <h2 className="text-center text-3xl md:text-4xl font-bold mb-2 text-primary dark:text-primary-dark">
@@ -102,55 +115,74 @@ export const Sponsors = () => {
       <p className="text-center md:w-3/4 mx-auto mt-4 mb-8 text-xl text-muted-foreground">
         Посмотрите, какие удивительные проекты создают наши ученики в процессе обучения.
       </p>
-      
-      <Swiper
-        modules={[Navigation, Pagination, EffectCoverflow]}
-        effect="coverflow"
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={3}
-        initialSlide={1}
-        loop={true}
-        loopedSlides={3}
-        slideToClickedSlide={true}
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        }}
-        pagination={{ clickable: true }}
-        navigation
-        className="mySwiper"
-      >
-        {projects.map((project, index) => (
-          <SwiperSlide key={index}>
-            <Card
-              className="bg-[#F7F7F8] dark:bg-[#1C1917] hover:bg-muted/70 dark:hover:bg-[#2a2625] transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
-            >
-              <CardHeader>
-                <CardTitle className="flex flex-col items-center gap-4 text-xl font-semibold">
-                  <span className="text-primary dark:text-primary-dark">{project.icon}</span>
-                  {project.name}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-muted-foreground dark:text-muted-foreground-dark">
-                <p>{project.description}</p>
-                <p className="mt-2 text-sm font-medium text-gray-700 dark:text-gray-300">Автор: {project.studentName}</p>
-                <Button 
-                  asChild
-                  className="mt-4 w-full text-lg font-semibold bg-[#2dac5c] hover:bg-[#259d52] text-white dark:text-black transition-colors duration-300 px-6 py-3 rounded-[10px]"
-                >
-                  <a href={project.projectUrl} target="_blank" rel="noopener noreferrer">
-                    Посмотреть проект
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+
+      <div className="relative px-10">
+        <style jsx global>{`
+          .swiper-wrapper {
+            align-items: stretch;
+          }
+          .swiper-slide {
+            height: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+          .swiper-slide-visible {
+            opacity: 1;
+          }
+          .swiper-slide-active,
+          .swiper-slide-next,
+          .swiper-slide-prev {
+            opacity: 1;
+          }
+          .swiper-container {
+            overflow-x: hidden !important;
+          }
+        `}</style>
+        <Swiper
+          modules={[Navigation]}
+          spaceBetween={30}
+          slidesPerView={3}
+          navigation={{
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          }}
+          loop={true}
+          loopedSlides={3}
+          watchSlidesProgress={true}
+          slideVisibleClass="swiper-slide-visible"
+          centeredSlides={true}
+          className="mySwiper !overflow-visible"
+        >
+          {projects.map(({ icon, name, description, studentName, projectUrl }, index) => (
+            <SwiperSlide key={index}>
+              <Card className="bg-muted dark:bg-muted/70 hover:bg-muted/90 dark:hover:bg-muted/60 transition-all duration-300 transform hover:scale-105 hover:shadow-lg h-full flex flex-col">
+                <CardHeader className="text-center">
+                  <CardTitle className="flex flex-col items-center gap-3 text-lg font-semibold text-foreground dark:text-foreground">
+                    <span className="text-primary dark:text-primary">{icon}</span>
+                    {name}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="flex-grow flex flex-col justify-between text-center">
+                  <div>
+                    <p className="text-sm text-foreground dark:text-foreground">{description}</p>
+                    <p className="mt-2 text-xs font-medium text-muted-foreground">Автор: {studentName}</p>
+                  </div>
+                  <Button 
+                    asChild
+                    className="mt-4 w-full text-sm font-semibold bg-primary hover:bg-primary/90 text-primary-foreground transition-colors duration-300 px-4 py-2 rounded-[10px]"
+                  >
+                    <a href={projectUrl} target="_blank" rel="noopener noreferrer">
+                      Посмотреть проект
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <div className="swiper-button-prev !text-primary dark:!text-primary !-left-6"></div>
+        <div className="swiper-button-next !text-primary dark:!text-primary !-right-6"></div>
+      </div>
     </section>
   );
 };
