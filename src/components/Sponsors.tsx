@@ -1,12 +1,12 @@
-import { Code, Gamepad2, Laptop, Globe, Database, Bot, ChartBar, Camera, Music, Smartphone, Cloud, PenTool, ChevronLeft, ChevronRight } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Button } from "./ui/button";
-import { useState, useRef } from 'react';
-import { Navigation } from 'swiper/modules';
+import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Button } from "./ui/button";
+import { Gamepad2, Laptop, Code, Globe, Database, Bot, ChartBar, Camera, Music, Smartphone, Cloud, PenTool } from 'lucide-react';
 
 interface ProjectProps {
   icon: JSX.Element;
@@ -48,7 +48,7 @@ const projects: ProjectProps[] = [
   {
     icon: <Database size={34} />,
     name: "Школьная библиотека",
-    description: "База днных на SQL",
+    description: "База дн��ых на SQL",
     studentName: "Елена, 15 лет",
     projectUrl: "https://example.com/school-library",
   },
@@ -120,64 +120,36 @@ export const Sponsors = () => {
       </p>
 
       <div className="relative px-10">
-        <style jsx global>{`
-          .swiper-wrapper {
-            align-items: stretch;
-          }
-          .swiper-slide {
-            height: auto;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-          }
-          .swiper-slide-visible {
-            opacity: 1;
-          }
-          .swiper-slide-active,
-          .swiper-slide-next,
-          .swiper-slide-prev {
-            opacity: 1;
-          }
-          .swiper-container {
-            overflow-x: hidden !important;
-          }
-        `}</style>
         <Swiper
           modules={[Navigation]}
           spaceBetween={30}
-          slidesPerView={3}
-          navigation={{
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          }}
-          loop={true}
-          loopedSlides={3}
-          watchSlidesProgress={true}
-          slideVisibleClass="swiper-slide-visible"
-          centeredSlides={true}
-          className="mySwiper !overflow-visible"
-          onSwiper={(swiper: SwiperType) => {
-            swiperRef.current = swiper;
+          slidesPerView={1}
+          navigation
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          breakpoints={{
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
           }}
         >
-          {projects.map(({ icon, name, description, studentName, projectUrl }, index) => (
+          {projects.map((project, index) => (
             <SwiperSlide key={index}>
               <Card className="bg-muted dark:bg-muted/70 hover:bg-muted/90 dark:hover:bg-muted/60 transition-all duration-300 transform hover:scale-105 hover:shadow-lg h-full flex flex-col">
                 <CardHeader className="text-center">
                   <CardTitle className="flex flex-col items-center gap-3 text-lg font-semibold text-foreground dark:text-foreground">
-                    <span className="text-primary dark:text-primary">{icon}</span>
-                    {name}
+                    <span className="text-primary dark:text-primary">{project.icon}</span>
+                    {project.name}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col justify-between text-center">
                   <div>
-                    <p className="text-sm text-foreground dark:text-foreground">{description}</p>
-                    <p className="mt-2 text-xs font-medium text-muted-foreground">Автор: {studentName}</p>
+                    <p className="text-sm text-foreground dark:text-foreground">{project.description}</p>
+                    <p className="mt-2 text-xs font-medium text-muted-foreground">Автор: {project.studentName}</p>
                   </div>
                   <Button 
                     asChild
                     className="mt-4 w-full text-sm font-semibold bg-primary hover:bg-primary/90 text-primary-foreground transition-colors duration-300 px-4 py-2 rounded-[10px]"
                   >
-                    <a href={projectUrl} target="_blank" rel="noopener noreferrer">
+                    <a href={project.projectUrl} target="_blank" rel="noopener noreferrer">
                       Посмотреть проект
                     </a>
                   </Button>
@@ -186,8 +158,6 @@ export const Sponsors = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="swiper-button-prev !text-primary dark:!text-primary-dark !-left-6"></div>
-        <div className="swiper-button-next !text-primary dark:!text-primary-dark !-right-6"></div>
       </div>
     </section>
   );
