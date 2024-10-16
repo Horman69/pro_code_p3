@@ -1,14 +1,14 @@
-import { Code, Gamepad2, Laptop, Globe, Database, Bot, ChartBar, Camera, Music, Smartphone, Cloud, PenTool, ChevronLeft, ChevronRight } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Button } from "./ui/button";
-import { useState } from 'react';
+import { useRef } from 'react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Button } from "./ui/button";
+import { Gamepad2, Laptop, Code, Globe, Database, Bot, ChartBar, Camera, Music, Smartphone, Cloud, PenTool } from 'lucide-react';
 
 interface ProjectProps {
-  icon: JSX.Element;
+  icon: React.ReactNode;
   name: string;
   description: string;
   studentName: string;
@@ -102,10 +102,12 @@ const projects: ProjectProps[] = [
   },
 ];
 
-export const Sponsors = () => {
+export const StudentProjects = () => {
+  const swiperRef = useRef<any>(null);
+
   return (
     <section
-      id="sponsors"
+      id="student-projects"
       className="container pt-24 sm:py-32 relative overflow-x-hidden"
       aria-label="Проекты наших учеников"
     >
@@ -117,27 +119,6 @@ export const Sponsors = () => {
       </p>
 
       <div className="relative px-10">
-        <style jsx global>{`
-          .swiper-wrapper {
-            align-items: stretch;
-          }
-          .swiper-slide {
-            height: auto;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-          }
-          .swiper-slide-visible {
-            opacity: 1;
-          }
-          .swiper-slide-active,
-          .swiper-slide-next,
-          .swiper-slide-prev {
-            opacity: 1;
-          }
-          .swiper-container {
-            overflow-x: hidden !important;
-          }
-        `}</style>
         <Swiper
           modules={[Navigation]}
           spaceBetween={30}
@@ -152,6 +133,14 @@ export const Sponsors = () => {
           slideVisibleClass="swiper-slide-visible"
           centeredSlides={true}
           className="mySwiper !overflow-visible"
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          breakpoints={{
+            320: { slidesPerView: 1 },
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
         >
           {projects.map(({ icon, name, description, studentName, projectUrl }, index) => (
             <SwiperSlide key={index}>
@@ -180,8 +169,16 @@ export const Sponsors = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="swiper-button-prev !text-primary dark:!text-primary !-left-6"></div>
-        <div className="swiper-button-next !text-primary dark:!text-primary !-right-6"></div>
+        <button 
+          onClick={() => swiperRef.current?.slidePrev()} 
+          className="swiper-button-prev !text-primary dark:!text-primary !-left-6"
+          aria-label="Предыдущий проект"
+        />
+        <button 
+          onClick={() => swiperRef.current?.slideNext()} 
+          className="swiper-button-next !text-primary dark:!text-primary !-right-6"
+          aria-label="Следующий проект"
+        />
       </div>
     </section>
   );
