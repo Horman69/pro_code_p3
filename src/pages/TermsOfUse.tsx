@@ -4,7 +4,7 @@ const TermsOfUse: React.FC = () => {
   return (
     <div className="container mx-auto py-8 px-4">
       <h1 className="text-3xl font-bold mb-4">Условия использования</h1>
-      <p className="mb-4">Последнее обновление: [Дата]</p>
+      <p className="mb-4">Последнее обновление: [11.11.2024]</p>
       <p className="mb-4">Используя сайт PRO_CODE, вы соглашаетесь с следующими условиями:</p>
       
       <ol className="list-decimal pl-5 mb-4">

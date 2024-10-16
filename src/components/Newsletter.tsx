@@ -5,6 +5,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/bootstrap.css'
 import { Send } from "lucide-react";
+import { Modal } from "./Modal";
 
 interface FormData {
   name: string;
@@ -18,6 +19,9 @@ export const Newsletter: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAgreed, setIsAgreed] = useState(false);
   const [agreementError, setAgreementError] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [modalSuccess, setModalSuccess] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -35,6 +39,7 @@ export const Newsletter: React.FC = () => {
     switch (name) {
       case "name":
         if (!value.trim()) error = "Необходимо указать имя";
+        else if (!/^[a-zA-Zа-яА-Я\s]+$/.test(value.trim())) error = "Имя должно содержать только буквы";
         break;
       case "phone":
         if (!value.trim() || value.replace(/\D/g, '').length < 10) {
@@ -50,34 +55,53 @@ export const Newsletter: React.FC = () => {
     setErrors(prev => ({ ...prev, [name]: error }));
   };
 
+  const validateForm = (): boolean => {
+    const newErrors: Partial<FormData> = {};
+    if (!formData.name.trim()) newErrors.name = "Необходимо указать имя";
+    if (!formData.phone.trim() || formData.phone.replace(/\D/g, '').length < 10) newErrors.phone = "Необходимо указать верный телефон";
+    if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "Необходимо указать верный email";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (Object.values(errors).every(error => !error) && isAgreed) {
+    const isValid = validateForm();
+    if (!isAgreed) {
+      setAgreementError("Необходимо согласиться с положением о защите персональных данных");
+    }
+    if (isValid && isAgreed) {
       setIsSubmitting(true);
       try {
         const form = e.target as HTMLFormElement;
         const formData = new FormData(form);
         
-        const response = await fetch('/', {
+        const response = await fetch('/process_form.php', {
           method: 'POST',
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: new URLSearchParams(formData as any).toString()
         });
         
         if (response.ok) {
-          alert("Заявка успешно отправлена!");
+          setModalMessage("Заявка успешно отправлена!");
+          setModalSuccess(true);
           setFormData({ name: "", phone: "", email: "" });
+          setIsAgreed(false);
         } else {
           throw new Error(`Ошибка при отправке формы: ${response.status}`);
         }
       } catch (error) {
         console.error('Error:', error);
-        alert(`Произошла ошибка при отправке заявки: ${error instanceof Error ? error.message : 'Неизвестная ошибка'}`);
+        setModalMessage(`Произошла ошибка при отправке заявки: ${error instanceof Error ? error.message : 'Неизвестная ошибка'}`);
+        setModalSuccess(false);
       } finally {
         setIsSubmitting(false);
+        setModalOpen(true);
       }
-    } else if (!isAgreed) {
-      setAgreementError("Необходимо согласиться с положением о защите персональных данных");
+    } else {
+      setModalMessage("Пожалуйста, заполните все поля корректно и согласитесь с условиями");
+      setModalSuccess(false);
+      setModalOpen(true);
     }
   };
 
@@ -88,17 +112,17 @@ export const Newsletter: React.FC = () => {
     "После рассчитаем финальную стоимость с учетом возможных льгот",
   ];
 
-  // Стили для полей ввода
+  // Обновленные стили для полей ввода
   const inputStyle = {
     width: '100%',
     height: '50px',
     fontSize: '16px',
     borderRadius: '10px',
-    color: '#71717A',
+    color: '#000000', // Изменено на черный цвет
     paddingLeft: '16px',
     backgroundColor: 'white',
-    border: 'none', // Убираем границу
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', // Добавляем тень
+    border: 'none',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   };
 
   return (
@@ -121,7 +145,7 @@ export const Newsletter: React.FC = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="dark:text-black focus:outline-none focus:ring-0"
+                      className="text-black focus:outline-none focus:ring-0"
                     />
                     {errors.name && <p className="text-[#FFF59E] text-sm mt-1">{errors.name}</p>}
                   </div>
@@ -133,7 +157,7 @@ export const Newsletter: React.FC = () => {
                       inputProps={{
                         name: 'phone',
                         required: true,
-                        className: 'dark:text-black focus:outline-none focus:ring-0',
+                        className: 'text-black focus:outline-none focus:ring-0',
                       }}
                       inputStyle={{
                         ...inputStyle,
@@ -147,6 +171,7 @@ export const Newsletter: React.FC = () => {
                       }}
                       dropdownStyle={{
                         width: 'max-content',
+                        color: '#000000',
                       }}
                       containerStyle={{
                         width: '100%',
@@ -161,7 +186,7 @@ export const Newsletter: React.FC = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="dark:text-black focus:outline-none focus:ring-0"
+                      className="text-black focus:outline-none focus:ring-0"
                     />
                     {errors.email && <p className="text-[#FFF59E] text-sm mt-1">{errors.email}</p>}
                   </div>
@@ -225,6 +250,13 @@ export const Newsletter: React.FC = () => {
           </CardContent>
         </Card>
       </div>
+      
+      <Modal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        message={modalMessage}
+        isSuccess={modalSuccess}
+      />
     </section>
   );
 };
