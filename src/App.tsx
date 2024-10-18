@@ -10,11 +10,11 @@ import { Navbar } from "./components/Navbar";
 import { Newsletter } from "./components/Newsletter";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { Services } from "./components/Services";
-//import { Sponsors } from "./components/Sponsors";
 import { Team } from "./components/Team";
 import { Testimonials } from "./components/Testimonials";
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfUse from './pages/TermsOfUse';
+
 import "./App.css";
 
 function HomePage() {
@@ -27,7 +27,6 @@ function HomePage() {
       <Features />
       <About />
       <Testimonials />
-      {/* <Sponsors /> */}
       <Team />
       <Newsletter />
       <FAQ />
@@ -38,9 +37,9 @@ function HomePage() {
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen"> {/* Добавлены классы */}
+      <div className="flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-grow"> {/* Добавлен класс flex-grow */}
+        <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />

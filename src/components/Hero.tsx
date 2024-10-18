@@ -45,6 +45,6 @@ export const Hero = () => {
       {/* Тень для визуального эффекта */}
       <div className="shadow"></div>
     </section>
-  );
+  ); 
 };
 

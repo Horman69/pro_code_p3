@@ -2,6 +2,7 @@ import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { ChartIcon } from "./Icons";
 import cubeLeg from "../assets/cube-leg.png";
 import { Button } from "./ui/button";
+import { Link } from 'react-router-dom';
 
 const scrollToForm = () => {
   document.getElementById('trial-form')?.scrollIntoView({ behavior: 'smooth' });
@@ -91,6 +92,9 @@ export const Services = () => {
           >
             ЗАПИСАТЬСЯ НА БЕСПЛАТНЫЙ УРОК
           </Button>
+          <Link to="/courses/roblox" className="your-button-classes">
+            Узнать о курсе Roblox
+          </Link>
         </div>
       </div>
     </section>
