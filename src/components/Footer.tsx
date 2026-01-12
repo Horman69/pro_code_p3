@@ -13,9 +13,9 @@ export const Footer = () => {
             className="font-bold text-xl flex items-center"
             aria-label="Главная страница PRO_CODE"
           >
-            <img 
+            <img
               src="/logo_white_4.jpg"
-              alt="Логотип PRO_CODE" 
+              alt="Логотип PRO_CODE"
               className="h-8 w-8 mr-2 rounded-full object-cover"
             />
             <span className="text-zinc-800 dark:text-zinc-200 hover:text-primary transition-colors duration-300">
@@ -58,14 +58,14 @@ export const Footer = () => {
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-base sm:text-lg">Контакты PRO_CODE</h3>
           <a
-            href="https://t.me/pro_code_web3_bot"
+            href="https://t.me/norman_p3"
             target="_blank"
             rel="noreferrer noopener"
             className="flex items-center text-sm sm:text-base opacity-60 hover:opacity-100 hover:text-primary transition-colors"
-            aria-label="Связаться с PRO_CODE через Telegram"
+            aria-label="Связаться с PRO_CODE через Telegram @norman_p3"
           >
             <Send className="h-4 w-4 mr-2" />
-            Связаться с нами
+            Telegram @norman_p3
           </a>
         </div>
       </section>
