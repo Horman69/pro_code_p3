@@ -60,6 +60,7 @@ export const Features = () => {
     <section
       id="game_developer"
       className="container py-24 sm:py-32 space-y-8"
+      aria-label="Особенности обучения в PRO CODE"
     >
       <h2 className="text-3xl lg:text-4xl font-bold md:text-center">
         Изучаем.{" "}
@@ -97,23 +98,22 @@ export const Features = () => {
             <CardFooter>
               <img
                 src={image}
-                alt={title}
+                alt={`Иллюстрация: ${title}`}
                 className="w-[200px] lg:w-[300px] mx-auto"
               />
             </CardFooter>
           </Card>
         ))}
       </div>
-      <div
-       className="flex justify-center mt-8">
- <Button 
-  className="w-full md:w-auto text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground transition-colors duration-300 px-6 py-3" 
-  onClick={scrollToForm}
->
-  ЗАПИСАТЬСЯ НА БЕСПЛАТНЫЙ УРОК
-</Button>
-</div>
-
+      <div className="flex justify-center mt-8">
+        <Button 
+          className="w-full md:w-auto text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground transition-colors duration-300 px-6 py-3" 
+          onClick={scrollToForm}
+          aria-label="Записаться на бесплатный урок в PRO CODE"
+        >
+          ЗАПИСАТЬСЯ НА БЕСПЛАТНЫЙ УРОК
+        </Button>
+      </div>
     </section>
   );
 };

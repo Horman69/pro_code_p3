@@ -1,3 +1,4 @@
+import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
   Card,
@@ -72,15 +73,15 @@ const testimonials: TestimonialProps[] = [
   },
 ];
 
-export const Testimonials = () => {
+export const Testimonials: React.FC = () => {
   return (
     <section
       id="testimonials"
       className="container py-24 sm:py-32 text-center"
-      aria-label="Отзывы о школе PRO_CODE"
+      aria-labelledby="testimonials-heading"
     >
       <header>
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <h2 id="testimonials-heading" className="text-3xl md:text-4xl font-bold mb-4">
           Отзывы родителей
           <span className="bg-gradient-to-b from-[#2dac5c]/60 to-[#2dac5c] text-transparent bg-clip-text">
             {" "}
@@ -95,7 +96,7 @@ export const Testimonials = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto">
         {testimonials.map(
-          ({ image, name, userName, comment, rating }: TestimonialProps) => (
+          ({ image, name, userName, comment, rating }: TestimonialProps, index) => (
             <Card
               key={userName}
               className="max-w-md overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 text-left bg-[#F7F7F8] dark:bg-[#1c1917] dark:text-white"
@@ -105,6 +106,7 @@ export const Testimonials = () => {
                   <AvatarImage
                     alt={`Фото ${name}`}
                     src={image}
+                    loading={index < 3 ? "eager" : "lazy"}
                   />
                   <AvatarFallback>{name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                 </Avatar>
@@ -127,6 +129,7 @@ export const Testimonials = () => {
         <Button 
           className="w-full md:w-auto text-lg font-semibold bg-[#2dac5c] hover:bg-[#259d52] text-white dark:text-black transition-colors duration-300 px-6 py-3 rounded-[10px]" 
           onClick={scrollToForm}
+          aria-label="Записаться на бесплатный урок"
         >
           ЗАПИСАТЬСЯ НА БЕСПЛАТНЫЙ УРОК
         </Button>

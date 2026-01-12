@@ -40,3 +40,10 @@ Thumbs.db
 # Временные файлы
 *.log
 *.tmp
+
+# Vercel
+.vercel
+
+
+# Vercel
+.vercel

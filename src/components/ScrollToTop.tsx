@@ -6,19 +6,25 @@ export const ScrollToTop = () => {
   const [showTopBtn, setShowTopBtn] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    const handleScroll = () => {
       if (window.scrollY > 400) {
         setShowTopBtn(true);
       } else {
         setShowTopBtn(false);
       }
-    });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const goToTop = () => {
-    window.scroll({
+    window.scrollTo({
       top: 0,
-      left: 0,
+      behavior: "smooth"
     });
   };
 
@@ -29,8 +35,11 @@ export const ScrollToTop = () => {
           onClick={goToTop}
           className="fixed bottom-4 right-4 opacity-90 shadow-md"
           size="icon"
+          aria-label="Прокрутить наверх страницы"
+          title="Прокрутить наверх страницы"
         >
-          <ArrowUpToLine className="h-4 w-4" />
+          <ArrowUpToLine className="h-4 w-4" aria-hidden="true" />
+          <span className="sr-only">Прокрутить наверх</span>
         </Button>
       )}
     </>

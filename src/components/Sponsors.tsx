@@ -48,7 +48,7 @@ const projects: ProjectProps[] = [
   {
     icon: <Database size={34} />,
     name: "Школьная библиотека",
-    description: "База дн��ых на SQL",
+    description: "База дных на SQL",
     studentName: "Елена, 15 лет",
     projectUrl: "https://example.com/school-library",
   },
@@ -136,7 +136,9 @@ export const Sponsors = () => {
               <Card className="bg-muted dark:bg-muted/70 hover:bg-muted/90 dark:hover:bg-muted/60 transition-all duration-300 transform hover:scale-105 hover:shadow-lg h-full flex flex-col">
                 <CardHeader className="text-center">
                   <CardTitle className="flex flex-col items-center gap-3 text-lg font-semibold text-foreground dark:text-foreground">
-                    <span className="text-primary dark:text-primary">{project.icon}</span>
+                    <span className="text-primary dark:text-primary" aria-label={`Иконка проекта: ${project.name}`}>
+                      {project.icon}
+                    </span>
                     {project.name}
                   </CardTitle>
                 </CardHeader>

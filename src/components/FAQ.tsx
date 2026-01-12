@@ -47,12 +47,12 @@ const FAQList: FAQProps[] = [
 
 export const FAQ = () => {
   return (
-    <section id="faq" className="py-12 sm:py-24">
+    <section id="faq" className="py-12 sm:py-24" aria-label="Часто задаваемые вопросы">
       <div className="container px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center text-black dark:text-white">
           Найдите ответ{" "}
           <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-            на свой вопрос
+            на свой вопрос о PRO CODE
           </span>
         </h2>
         <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 bg-[#F7F7F8] dark:bg-[#1c1917]">
@@ -79,7 +79,7 @@ export const FAQ = () => {
             </Accordion>
 
             <h3 className="font-medium mt-6 sm:mt-8 text-center text-sm sm:text-base">
-              Остались вопросы?{" "}
+              Остались вопросы о школе программирования PRO CODE?{" "}
               <a
                 rel="noreferrer noopener"
                 href="https://t.me/pro_code_web3_bot"

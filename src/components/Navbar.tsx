@@ -52,13 +52,14 @@ export const Navbar = () => {
       <NavigationMenu className="mx-auto">
         <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between items-center">
           <NavigationMenuItem className="font-bold">
-            <a href="/" className="flex items-center">
+            <a href="/" className="flex items-center" itemScope itemType="https://schema.org/Organization">
               <img 
                 src="/logo_white_4.jpg"
-                alt="PRO_CODE Logo" 
+                alt="PRO_CODE - онлайн школа программирования для детей" 
                 className="h-8 w-8 mr-2 rounded-full object-cover"
+                itemProp="logo"
               />
-              <span className="text-zinc-800 dark:text-zinc-200 hover:text-primary-light dark:hover:text-primary-dark transition-colors duration-300">
+              <span itemProp="name" className="text-zinc-800 dark:text-zinc-200 hover:text-primary-light dark:hover:text-primary-dark transition-colors duration-300">
                 PRO_CODE
               </span>
             </a>

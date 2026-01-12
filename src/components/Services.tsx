@@ -2,7 +2,7 @@ import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { ChartIcon } from "./Icons";
 import cubeLeg from "../assets/cube-leg.png";
 import { Button } from "./ui/button";
-import { Link } from 'react-router-dom';
+
 
 const scrollToForm = () => {
   document.getElementById('trial-form')?.scrollIntoView({ behavior: 'smooth' });
@@ -22,7 +22,7 @@ const serviceList: ServiceProps[] = [
     icon: <ChartIcon />,
   },
   {
-    title: "Развитие творческого потенциала",
+    title: "Развитие ворческого потенциала",
     description:
       "Творческий потенциал раскрывается через реализацию собственных проектов, эксперименты и нестандартный подход к задачам. Исследование различных методов решения помогает ученикам развивать креативное мышление и уникальные способности.",
     icon: <ChartIcon />,
@@ -65,9 +65,9 @@ export const Services = () => {
               <Card 
                 key={title} 
                 className="hover:shadow-lg hover:scale-105 transition-all duration-300 bg-[#F7F7F8] dark:bg-[#1c1917] dark:text-white"
->
+              >
                 <CardHeader className="space-y-1 flex md:flex-row justify-start items-start gap-4">
-                  <div className="mt-1 bg-primary/20 p-1 rounded-2xl">{icon}</div>
+                  <div className="mt-1 bg-primary/20 p-1 rounded-2xl" aria-hidden="true">{icon}</div>
                   <div>
                     <CardTitle>{title}</CardTitle>
                     <CardDescription className="text-md mt-2 dark:text-gray-300">
@@ -84,7 +84,8 @@ export const Services = () => {
           <img
             src={cubeLeg}
             className="w-[300px] md:w-[500px] lg:w-[600px] object-contain"
-            alt="О наших услугах"
+            alt="Иллюстрация развития в IT с PRO_CODE"
+            loading="lazy"
           />
           <Button 
             className="w-full md:w-auto text-lg font-semibold bg-[#2dac5c] hover:bg-[#259d52] text-white dark:text-black transition-colors duration-300 px-6 py-3 mt-4 rounded-[10px]" 
@@ -92,9 +93,6 @@ export const Services = () => {
           >
             ЗАПИСАТЬСЯ НА БЕСПЛАТНЫЙ УРОК
           </Button>
-          <Link to="/courses/roblox" className="your-button-classes">
-            Узнать о курсе Roblox
-          </Link>
         </div>
       </div>
     </section>

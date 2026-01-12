@@ -1,10 +1,9 @@
 import { Send } from "lucide-react";
 import { Link } from 'react-router-dom';
- // Убедитесь, что путь к логотипу правильный
 
 export const Footer = () => {
   return (
-    <footer id="footer" className="bg-[#F7F7F8] dark:bg-[#1c1917] px-4 sm:px-0">
+    <footer id="footer" className="bg-[#F7F7F8] dark:bg-[#1c1917] px-4 sm:px-0" aria-label="Подвал сайта PRO_CODE">
       <hr className="w-11/12 mx-auto" />
 
       <section className="container py-10 sm:py-20 grid grid-cols-2 md:grid-cols-4 gap-x-6 sm:gap-x-12 gap-y-8">
@@ -12,10 +11,11 @@ export const Footer = () => {
           <a
             href="/"
             className="font-bold text-xl flex items-center"
+            aria-label="Главная страница PRO_CODE"
           >
             <img 
               src="/logo_white_4.jpg"
-              alt="PRO_CODE Logo" 
+              alt="Логотип PRO_CODE" 
               className="h-8 w-8 mr-2 rounded-full object-cover"
             />
             <span className="text-zinc-800 dark:text-zinc-200 hover:text-primary transition-colors duration-300">
@@ -28,40 +28,41 @@ export const Footer = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-base sm:text-lg">Обучение</h3>
+          <h3 className="font-bold text-base sm:text-lg">Обучение в PRO_CODE</h3>
           <div>
             <a href="/#courses" className="text-sm sm:text-base opacity-60 hover:opacity-100 hover:text-primary transition-colors">
-              Курсы
+              Курсы программирования
             </a>
           </div>
           <div>
             <a href="/#testimonials" className="text-sm sm:text-base opacity-60 hover:opacity-100 hover:text-primary transition-colors">
-              Отзывы
+              Отзывы учеников
             </a>
           </div>
         </div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-base sm:text-lg">О нас</h3>
+          <h3 className="font-bold text-base sm:text-lg">О PRO_CODE</h3>
           <div>
             <a href="/#about" className="text-sm sm:text-base opacity-60 hover:opacity-100 hover:text-primary transition-colors">
-              О школе
+              О школе программирования
             </a>
           </div>
           <div>
             <a href="/#faq" className="text-sm sm:text-base opacity-60 hover:opacity-100 hover:text-primary transition-colors">
-              FAQ
+              Часто задаваемые вопросы
             </a>
           </div>
         </div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-base sm:text-lg">Контакты</h3>
+          <h3 className="font-bold text-base sm:text-lg">Контакты PRO_CODE</h3>
           <a
             href="https://t.me/pro_code_web3_bot"
             target="_blank"
             rel="noreferrer noopener"
             className="flex items-center text-sm sm:text-base opacity-60 hover:opacity-100 hover:text-primary transition-colors"
+            aria-label="Связаться с PRO_CODE через Telegram"
           >
             <Send className="h-4 w-4 mr-2" />
             Связаться с нами
@@ -72,10 +73,10 @@ export const Footer = () => {
       <section className="container pb-14 text-center">
         <div className="mt-4 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4">
           <Link to="/privacy-policy" className="text-sm sm:text-base text-primary hover:underline">
-            Политика конфиденциальности
+            Политика конфиденциальности PRO_CODE
           </Link>
           <Link to="/terms-of-use" className="text-sm sm:text-base text-primary hover:underline">
-            Условия использования
+            Условия использования PRO_CODE
           </Link>
         </div>
         <h3 className="mt-4 text-sm sm:text-base">

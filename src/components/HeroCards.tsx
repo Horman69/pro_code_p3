@@ -25,7 +25,7 @@ const benefits = [
 
 export const HeroCards: React.FC = () => {
   return (
-    <div className="hidden lg:flex flex-row flex-wrap gap-4 lg:gap-8 relative w-full lg:w-[700px] h-[500px] lg:h-[500px]">
+    <div className="hidden lg:flex flex-row flex-wrap gap-4 lg:gap-8 relative w-full lg:w-[700px] h-[500px] lg:h-[500px]" aria-label="Преимущества обучения в PRO_CODE">
       
       {/* Развитие уверенности */}
       <Card className="absolute w-[340px] -top-[40px] left-0 drop-shadow-xl shadow-black/10 dark:shadow-white/10 hover:transform hover:scale-105 transition-transform duration-300">
@@ -46,7 +46,7 @@ export const HeroCards: React.FC = () => {
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground dark:text-gray-300">
-            Первый оплачиваемый IT-проект, который поможет поверить в свои силы и начать карьеру в программировании
+            Первый оплачиваемый IT-проект, который поможет поверить в свои силы и начать карьеру в IT
           </p>
         </CardContent>
       </Card>
@@ -86,7 +86,7 @@ export const HeroCards: React.FC = () => {
           <Button 
             className="w-full px-8 py-4 text-lg font-semibold bg-[#259D52] hover:bg-[#1e8544] text-white dark:bg-[#259D52] dark:hover:bg-[#1e8544] dark:text-black transition-colors duration-300 rounded-[10px]" 
             onClick={scrollToForm}
-            aria-label="Записаться на бесплатный пробный урок"
+            aria-label="Записаться на бесплатный пробный урок в PRO_CODE"
           >
             ЗАПИСАТЬСЯ
           </Button>
@@ -114,7 +114,7 @@ export const HeroCards: React.FC = () => {
           <div>
             <CardTitle>Время с пользой</CardTitle>
             <CardDescription className="text-md mt-2">
-              Направим увлечение компьютером в полезное русло для большого будущего
+              Превратим интерес к компьютеру в полезные навыки для будущего
             </CardDescription>
           </div>
         </CardHeader>

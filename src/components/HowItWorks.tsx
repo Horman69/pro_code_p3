@@ -14,25 +14,25 @@ interface FeatureProps {
 
 const features: FeatureProps[] = [
   {
-    icon: <MedalIcon />,
+    icon: <MedalIcon aria-hidden="true" />,
     title: "Разработчик игр",
     description:
       "Ребёнок научится создавать собственные игры на платформах Roblox или Unity, освоит программирование, работу с игровыми объектами и персонажами.",
   },
   {
-    icon: <WalletIcon />,
+    icon: <WalletIcon aria-hidden="true" />,
     title: "Программист",
     description:
       "Мы начнем с изучения основ работы с консолью разработчика, узнаем, как использовать переменные и операторы для создания программ.",
   },
   {
-    icon: <PlaneIcon />,
+    icon: <PlaneIcon aria-hidden="true" />,
     title: "3D-моделлер",
     description:
       "Ребёнок научится создавать 3D-модели из 2D-изображений, освоит основы построения фигур и разберётся в принципах управления в Blender.",
   },
   {
-    icon: <GiftIcon />,
+    icon: <GiftIcon aria-hidden="true" />,
     title: "Дизайнер в IT",
     description:
       "Ученик создаст одностраничный сайт, нарисует красивую обложку и добавит эффектную анимацию, освоив основы веб-дизайна и графики.",
@@ -68,7 +68,7 @@ export const HowItWorks = () => {
             <CardHeader>
               <CardTitle className="flex flex-col items-center gap-4 text-xl font-semibold">
                 {icon}
-                {title} {/* Убрали <h3> отсюда */}
+                {title}
               </CardTitle>
             </CardHeader>
             <CardContent className="text-muted-foreground">
@@ -80,10 +80,10 @@ export const HowItWorks = () => {
       <Button 
         className="w-full md:w-auto text-lg font-semibold bg-[#2dac5c] hover:bg-[#259d52] text-white dark:text-black transition-colors duration-300 px-6 py-3 rounded-[10px]" 
         onClick={scrollToForm}
+        aria-label="Записаться на бесплатный урок"
       >
         ЗАПИСАТЬСЯ НА БЕСПЛАТНЫЙ УРОК
       </Button>
     </section>
   );
 };
-

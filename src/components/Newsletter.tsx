@@ -69,8 +69,9 @@ export const Newsletter: React.FC = () => {
     const isValid = validateForm();
     if (!isAgreed) {
       setAgreementError("Необходимо согласиться с положением о защите персональных данных");
+      return; // Прерываем выполнение, если нет согласия
     }
-    if (isValid && isAgreed) {
+    if (isValid) {
       setIsSubmitting(true);
       try {
         const form = e.target as HTMLFormElement;
@@ -83,12 +84,14 @@ export const Newsletter: React.FC = () => {
         });
         
         if (response.ok) {
-          setModalMessage("Заявка успешно отправлена!");
+          const responseData = await response.json(); // Предполагаем, что сервер возвращает JSON
+          setModalMessage(responseData.message || "Заявка успешно отправлена!");
           setModalSuccess(true);
           setFormData({ name: "", phone: "", email: "" });
           setIsAgreed(false);
         } else {
-          throw new Error(`Ошибка при отправке формы: ${response.status}`);
+          const errorData = await response.json();
+          throw new Error(errorData.message || `Ошибка при отправке формы: ${response.status}`);
         }
       } catch (error) {
         console.error('Error:', error);
