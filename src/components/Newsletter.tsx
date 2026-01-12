@@ -251,7 +251,7 @@ export const Newsletter: React.FC = () => {
                   onClick={() => window.location.href = 'https://t.me/norman_p3'}
                 >
                   <Send size={16} className="sm:w-5 sm:h-5 md:w-6 md:h-6" />
-                  СВЯЗАТЬСЯ В TELEGRAM @norman_p3
+                  СВЯЗАТЬСЯ С НАМИ В TELEGRAM
                 </Button>
               </div>
             </div>

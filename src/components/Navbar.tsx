@@ -53,9 +53,9 @@ export const Navbar = () => {
         <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between items-center">
           <NavigationMenuItem className="font-bold">
             <a href="/" className="flex items-center" itemScope itemType="https://schema.org/Organization">
-              <img 
+              <img
                 src="/logo_white_4.jpg"
-                alt="PRO_CODE - онлайн школа программирования для детей" 
+                alt="PRO_CODE - онлайн школа программирования для детей"
                 className="h-8 w-8 mr-2 rounded-full object-cover"
                 itemProp="logo"
               />
@@ -90,7 +90,7 @@ export const Navbar = () => {
                   ))}
                   <a
                     rel="noreferrer noopener"
-                    href="https://t.me/pro_code_web3_bot"
+                    href="https://t.me/norman_p3"
                     target="_blank"
                     className={`w-[110px] border ${buttonVariants({
                       variant: "secondary",
@@ -122,7 +122,7 @@ export const Navbar = () => {
           <div className="hidden md:flex gap-2 items-center">
             <a
               rel="noreferrer noopener"
-              href="https://t.me/pro_code_web3_bot"
+              href="https://t.me/norman_p3"
               target="_blank"
               className={`border ${buttonVariants({ variant: "secondary" })} flex items-center`}
             >
