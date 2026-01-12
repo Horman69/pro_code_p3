@@ -69,29 +69,33 @@ export const Newsletter: React.FC = () => {
     const isValid = validateForm();
     if (!isAgreed) {
       setAgreementError("Необходимо согласиться с положением о защите персональных данных");
-      return; // Прерываем выполнение, если нет согласия
+      return;
     }
     if (isValid) {
       setIsSubmitting(true);
       try {
-        const form = e.target as HTMLFormElement;
-        const formData = new FormData(form);
-        
-        const response = await fetch('/process_form.php', {
+        // Отправляем в Telegram через Vercel Serverless Function
+        const response = await fetch('/api/contact', {
           method: 'POST',
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams(formData as any).toString()
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            phone: formData.phone,
+            email: formData.email
+          })
         });
-        
-        if (response.ok) {
-          const responseData = await response.json(); // Предполагаем, что сервер возвращает JSON
-          setModalMessage(responseData.message || "Заявка успешно отправлена!");
+
+        const responseData = await response.json();
+
+        if (response.ok && responseData.success) {
+          setModalMessage(responseData.message || "Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.");
           setModalSuccess(true);
           setFormData({ name: "", phone: "", email: "" });
           setIsAgreed(false);
         } else {
-          const errorData = await response.json();
-          throw new Error(errorData.message || `Ошибка при отправке формы: ${response.status}`);
+          throw new Error(responseData.error || `Ошибка при отправке формы: ${response.status}`);
         }
       } catch (error) {
         console.error('Error:', error);
@@ -107,6 +111,7 @@ export const Newsletter: React.FC = () => {
       setModalOpen(true);
     }
   };
+
 
   // Шаги процесса
   const steps = [
@@ -222,13 +227,13 @@ export const Newsletter: React.FC = () => {
                   )}
                 </form>
               </div>
-              
+
               <div className="flex flex-col gap-4 lg:w-1/2">
                 <h3 className="text-xl sm:text-2xl font-semibold text-black dark:text-white mb-4">
                   Мы свяжемся с вами в течение дня
                 </h3>
                 {steps.map((step, index) => (
-                  <Card 
+                  <Card
                     key={index}
                     className="hover:shadow-lg transition-all duration-300 hover:scale-105 transform bg-gray-100 dark:bg-[#2a2625] cursor-pointer group"
                   >
@@ -240,20 +245,20 @@ export const Newsletter: React.FC = () => {
                     </CardHeader>
                   </Card>
                 ))}
-                
+
                 <Button
                   className="w-full mt-4 px-2 sm:px-4 md:px-6 py-2 sm:py-3 text-xs sm:text-sm md:text-base font-bold bg-[#2dac5c] hover:bg-[#259d52] text-white dark:text-black transition-colors duration-300 rounded-[10px] flex items-center justify-center gap-2 whitespace-normal"
-                  onClick={() => window.location.href = 'https://t.me/PRO_CODE_web3_bot'}
+                  onClick={() => window.location.href = 'https://t.me/norman_p3'}
                 >
                   <Send size={16} className="sm:w-5 sm:h-5 md:w-6 md:h-6" />
-                  СВЯЗАТЬСЯ С НАМИ
+                  СВЯЗАТЬСЯ В TELEGRAM @norman_p3
                 </Button>
               </div>
             </div>
           </CardContent>
         </Card>
       </div>
-      
+
       <Modal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
